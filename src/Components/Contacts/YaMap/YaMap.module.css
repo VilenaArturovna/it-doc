@@ -1,0 +1,25 @@
+.map {
+    position: relative;
+    overflow: hidden;
+    width: 500px;
+
+}
+
+.map a {
+    color: #eee;
+    font-size: 12px;
+    position: absolute;
+    top: 0px;
+}
+
+.mapDescription {
+    top: 14px;
+}
+.mapDescription1 {
+    top: 28px;
+}
+
+.iframe {
+    position: relative;
+    width: 100%;
+}

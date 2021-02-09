@@ -1,0 +1,10 @@
+.block {
+    height: 80vh;
+    background-color: #152f70;
+
+}
+.about {
+    color: white;
+    font-size: 20px;
+    width: 70%;
+}

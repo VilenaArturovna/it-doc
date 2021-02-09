@@ -1,0 +1,11 @@
+.header {
+    height: 60px;
+    background-color: #152f70;
+}
+
+.headerContainer {
+    justify-content: space-between;
+}
+.logo {
+    width: 50px;
+}
