@@ -1,0 +1,34 @@
+.footer {
+    background-color: #152f70;
+    min-height: 200px;
+    padding-top: 20px;
+}
+
+.footerContainer {
+    flex-direction: column;
+}
+
+.social {
+    width: 150px;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+
+}
+.socialIcon {
+    color: white;
+    font-size: 2rem;
+}
+
+.contacts {
+    display: flex;
+    flex-direction: column;
+}
+.contacts span {
+    color: white;
+    text-decoration: none;
+}
+.contacts span a{
+    color: white;
+    text-decoration: none;
+}
