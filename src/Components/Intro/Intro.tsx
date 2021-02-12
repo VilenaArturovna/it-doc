@@ -2,9 +2,8 @@ import React from "react";
 import style from './Intro.module.css'
 import logotype from './../../Common/Images/logo.png'
 import {Button} from "@material-ui/core";
-import AddIcCallIcon from '@material-ui/icons/AddIcCall';
-import EmailIcon from '@material-ui/icons/Email';
-import CloudDownloadIcon from '@material-ui/icons/CloudDownload';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faCloudDownloadAlt, faMobileAlt, faEnvelopeOpen} from "@fortawesome/free-solid-svg-icons";
 
 export const Intro = () => {
     return (
@@ -15,9 +14,9 @@ export const Intro = () => {
                 <Button variant={"contained"} color={"secondary"} className={style.btn}>Статус заказа</Button>
                 <hr className={style.hr}/>
                 <div className={style.iconsBlock}>
-                    <AddIcCallIcon className={style.icon} />
-                    <EmailIcon className={style.icon}/>
-                    <CloudDownloadIcon className={style.icon}/>
+                    <FontAwesomeIcon icon={faEnvelopeOpen} className={style.icon}/>
+                    <FontAwesomeIcon icon={faMobileAlt} className={style.icon}/>
+                    <FontAwesomeIcon icon={faCloudDownloadAlt} className={style.icon}/>
                 </div>
 
             </div>
