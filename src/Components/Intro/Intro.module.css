@@ -1,10 +1,22 @@
 .intro {
     height: 100vh;
+
     background-image: url('img/shutterstock_489091843.jpg');
 
     background-attachment: fixed !important;
 
 }
+.particles {
+    position: absolute;
+    top: 60px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0.4;
+    z-index: 0;
+
+}
+
 .logotype {
     height: 100vh;
     display: flex;
