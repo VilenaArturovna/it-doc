@@ -16,7 +16,7 @@ function App() {
             <Block1 />
             <Block2 />
             <Contacts/>
-            <Block3 />
+            {/*<Block3 />*/}
             <Footer/>
         </div>
     );

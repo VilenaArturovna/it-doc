@@ -1,5 +1,5 @@
 import styleContainer from './../../Common/Styles/Container.module.css'
-import style from './Block2.module.css'
+import style from './Block2.module.scss'
 
 export const Block2 = () => {
     return (

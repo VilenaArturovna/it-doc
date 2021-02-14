@@ -1,0 +1,15 @@
+@import "./../../Common/sass/Variables";
+
+.header {
+    height: 60px;
+    background-color: $bgSecondColor;
+    z-index: 20;
+    .headerContainer {
+        justify-content: space-between;
+        .logo {
+            width: 50px;
+        }
+    }
+
+}
+

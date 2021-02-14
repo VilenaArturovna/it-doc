@@ -1,0 +1,15 @@
+@import "./../../Common/sass/Variables";
+
+.block {
+    height: 70vh;
+    background-color: $bgSecondColor;
+    .iconBlock {
+        max-width: 300px;
+    }
+    .about {
+        text-align: justify;
+        color: $textColor;
+        font-size: 24px;
+        width: 50%;
+    }
+}

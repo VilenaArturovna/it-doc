@@ -1,5 +1,5 @@
 import React from "react";
-import style from './YaMap.module.css'
+import style from './YaMap.module.scss'
 
 export const YaMap = () => {
     return (

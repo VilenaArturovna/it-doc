@@ -1,5 +1,5 @@
 import React from "react";
-import style from './Footer.module.css'
+import style from './Footer.module.scss'
 import styleContainer from "../../Common/Styles/Container.module.css";
 import {Grid, Paper} from "@material-ui/core";
 import InstagramIcon from '@material-ui/icons/Instagram';

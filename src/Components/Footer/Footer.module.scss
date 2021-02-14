@@ -1,0 +1,37 @@
+@import "./../../Common/sass/Variables";
+
+.footer {
+    background-color: $bgSecondColor;
+    min-height: 200px;
+    padding-top: 20px;
+    .footerContainer {
+        flex-direction: column;
+    }
+    .social {
+        width: 150px;
+        height: 50px;
+        display: flex;
+        justify-content: space-between;
+        .socialIcon {
+            color: $textColor;
+            font-size: 2rem;
+        }
+    }
+
+
+    .contacts {
+        display: flex;
+        flex-direction: column;
+        span {
+            color: $textColor;
+            text-decoration: none;
+            a{
+                color: $textColor;
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+
+

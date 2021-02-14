@@ -1,5 +1,5 @@
 import React from "react";
-import style from './Header.module.css'
+import style from './Header.module.scss'
 import {Nav} from "./Nav/Nav";
 import styleContainer from './../../Common/Styles/Container.module.css'
 import logo from './../../Common/Images/logo.svg'
@@ -9,7 +9,8 @@ export const Header = () => {
         <header className={style.header}>
             <div className={`${styleContainer.container} ${style.headerContainer}`}>
                 <img src={logo} alt="logo" className={style.logo}/>
-                <Nav/></div>
+                <Nav/>
+            </div>
         </header>
     )
 }

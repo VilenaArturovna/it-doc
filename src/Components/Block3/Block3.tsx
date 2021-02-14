@@ -1,5 +1,5 @@
 import styleContainer from './../../Common/Styles/Container.module.css'
-import style from './Block3.module.css'
+import style from './Block3.module.scss'
 import bg from './../../Common/Images/tild3366-6633-4839-a638-633363316466__1.jpg'
 
 
