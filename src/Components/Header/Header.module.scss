@@ -2,8 +2,11 @@
 
 .header {
     height: 60px;
+    width: 100%;
     background-color: $bgSecondColor;
     z-index: 20;
+    position: fixed;
+    transition: transform 200ms ease-in-out;
     .headerContainer {
         justify-content: space-between;
         .logo {
