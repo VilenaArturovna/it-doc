@@ -1,26 +1,26 @@
 {
   "files": {
     "main.css": "/it-doc/static/css/main.06e984fe.chunk.css",
-    "main.js": "/it-doc/static/js/main.c3a61505.chunk.js",
-    "main.js.map": "/it-doc/static/js/main.c3a61505.chunk.js.map",
-    "runtime-main.js": "/it-doc/static/js/runtime-main.16876c87.js",
-    "runtime-main.js.map": "/it-doc/static/js/runtime-main.16876c87.js.map",
-    "static/js/2.e8987c8b.chunk.js": "/it-doc/static/js/2.e8987c8b.chunk.js",
-    "static/js/2.e8987c8b.chunk.js.map": "/it-doc/static/js/2.e8987c8b.chunk.js.map",
-    "static/js/3.3cd53f64.chunk.js": "/it-doc/static/js/3.3cd53f64.chunk.js",
-    "static/js/3.3cd53f64.chunk.js.map": "/it-doc/static/js/3.3cd53f64.chunk.js.map",
+    "main.js": "/it-doc/static/js/main.66b92399.chunk.js",
+    "main.js.map": "/it-doc/static/js/main.66b92399.chunk.js.map",
+    "runtime-main.js": "/it-doc/static/js/runtime-main.483f3284.js",
+    "runtime-main.js.map": "/it-doc/static/js/runtime-main.483f3284.js.map",
+    "static/js/2.9460355a.chunk.js": "/it-doc/static/js/2.9460355a.chunk.js",
+    "static/js/2.9460355a.chunk.js.map": "/it-doc/static/js/2.9460355a.chunk.js.map",
+    "static/js/3.864fa7fa.chunk.js": "/it-doc/static/js/3.864fa7fa.chunk.js",
+    "static/js/3.864fa7fa.chunk.js.map": "/it-doc/static/js/3.864fa7fa.chunk.js.map",
     "index.html": "/it-doc/index.html",
     "static/css/main.06e984fe.chunk.css.map": "/it-doc/static/css/main.06e984fe.chunk.css.map",
-    "static/js/2.e8987c8b.chunk.js.LICENSE.txt": "/it-doc/static/js/2.e8987c8b.chunk.js.LICENSE.txt",
+    "static/js/2.9460355a.chunk.js.LICENSE.txt": "/it-doc/static/js/2.9460355a.chunk.js.LICENSE.txt",
     "static/media/Icon_block.2cbcbbb9.png": "/it-doc/static/media/Icon_block.2cbcbbb9.png",
     "static/media/horizontal_on_transparent_2000x899px_by_logaster.afdeba5c.png": "/it-doc/static/media/horizontal_on_transparent_2000x899px_by_logaster.afdeba5c.png",
     "static/media/logo.6ce24c58.svg": "/it-doc/static/media/logo.6ce24c58.svg",
     "static/media/tild3366-6633-4839-a638-633363316466__1.47dce480.jpg": "/it-doc/static/media/tild3366-6633-4839-a638-633363316466__1.47dce480.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.16876c87.js",
-    "static/js/2.e8987c8b.chunk.js",
+    "static/js/runtime-main.483f3284.js",
+    "static/js/2.9460355a.chunk.js",
     "static/css/main.06e984fe.chunk.css",
-    "static/js/main.c3a61505.chunk.js"
+    "static/js/main.66b92399.chunk.js"
   ]
 }
