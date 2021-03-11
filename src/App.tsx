@@ -7,6 +7,7 @@ import {Contacts} from "./Components/Contacts/Contacts";
 import {Block1} from "./Components/Block1/Block1";
 import {Block2} from './Components/Block2/Block2';
 import {Block3} from "./Components/Block3/Block3";
+import {FeedbackForm} from "./Components/Feedback/FeedbackForm";
 
 function App() {
     return (
@@ -16,6 +17,7 @@ function App() {
             <Block1 />
             <Block2 />
             <Contacts/>
+            <FeedbackForm />
             {/*<Block3 />*/}
             <Footer/>
         </div>
