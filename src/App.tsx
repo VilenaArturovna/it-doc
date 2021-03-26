@@ -8,18 +8,22 @@ import {Block1} from "./Components/Block1/Block1";
 import {Block2} from './Components/Block2/Block2';
 import {Block3} from "./Components/Block3/Block3";
 import {FeedbackForm} from "./Components/Feedback/FeedbackForm";
+import {Slider} from "./Components/Slider/Slider";
+import {Nav} from "./Components/Nav/Nav";
 
 function App() {
     return (
         <div className="App">
             <Header/>
-            <Intro/>
+            <Nav />
+            <Slider />
+            {/*<Intro/>
             <Block1 />
             <Block2 />
             <Contacts/>
             <FeedbackForm />
-            {/*<Block3 />*/}
-            <Footer/>
+            <Block3 />
+            <Footer/>*/}
         </div>
     );
 }

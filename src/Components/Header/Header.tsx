@@ -1,38 +1,19 @@
-import React, {useEffect, useState} from 'react';
-import style from './Header.module.scss'
-import {Nav} from "./Nav/Nav";
+import React from "react";
+import styles from './Header.module.scss'
 import styleContainer from './../../Common/Styles/Container.module.css'
-import logo from './../../Common/Images/logo.svg'
-import {Fade} from "react-awesome-reveal";
-
+import logo from './../../Assets/Images/horizontal_on_transparent_2000x899px_by_logaster.png'
+import logoRicoh from './../../Assets/Images/Ricoh_partner.png'
 
 export const Header = () => {
-
-    const [show, setShow] = useState(false);
-
-    const handleScroll = () => {
-        if (window.pageYOffset > 500) setShow(true);
-        else setShow(false);
-    };
-    useEffect(() => {
-        window.addEventListener('scroll', handleScroll);
-
-    }, []);
-
-    if (!show) return null;
-
     return (
-        <div onScroll={handleScroll}>
-
-            <Fade
-                className={style.header}>
-                <div className={`${styleContainer.container} ${style.headerContainer}`}>
-                    <img src={logo} alt="logo" className={style.logo}/>
-                    <Nav/>
-                </div>
-
-            </Fade>
-
+        <div className={styles.header}>
+            <div className={styles.headerContainer + ' ' + styleContainer.container}>
+                <img src={logo} className={styles.logo} alt=""/>
+                <img src={logoRicoh} className={styles.logo} alt=""/>
+                <a href="">Контакты</a>
+                <span><a href={'tel:+7381237-85-02'}>8 (3812) 37-85-03</a></span>
+                <span>Пн-Пт<br/>8:00-18:00</span>
+            </div>
         </div>
     )
 }

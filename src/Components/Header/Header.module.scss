@@ -1,16 +1,29 @@
 @import "./../../Common/sass/Variables";
 
 .header {
-    height: 60px;
+    height: 80px;
     width: 100%;
-    background-color: $bgSecondColor;
+    background-color: $textColor;
     z-index: 20;
-    position: fixed;
-    transition: transform 200ms ease-in-out;
+
     .headerContainer {
         justify-content: space-between;
         .logo {
-            width: 50px;
+            height: 60px;
+        }
+        a {
+            text-decoration: none;
+            color: $textSecondColor;
+            font-weight: 500;
+        }
+        span a {
+            text-decoration: none;
+            color: $textThirdColor;
+            font-weight: bold;
+        }
+        span {
+            text-align: center;
+            font-weight: bold;
         }
     }
 

@@ -1,0 +1,54 @@
+@import "./../../Common/sass/Variables.scss";
+
+.swiper-container {
+    width: 100%;
+}
+.swiper-button-prev {
+    left: 50%;
+    margin-left: -590px;
+    -webkit-transform: translate(-200%,-50%);
+    -ms-transform: translate(-200%,-50%);
+    transform: translate(-200%,-50%);
+    color: $btnColor;
+}
+.swiper-button-next {
+    right: 50%;
+    margin-right: -590px;
+    -webkit-transform: translate(200%,-50%);
+    -ms-transform: translate(200%,-50%);
+    transform: translate(200%,-50%);
+    color: $btnColor;
+}
+.swiper-wrapper {
+    padding-inline-start: 0;
+    margin-block-start: 0;
+    height: 400px;
+
+    img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-position: 50% 0;
+        -webkit-transition: all 1s linear;
+        -o-transition: all 1s linear;
+        transition: all 1s linear;
+    }
+    .contentSlider {
+        position: relative;
+        display: block;
+        h2 {
+            color: $btnColor;
+        }
+        div {
+            color: $textColor;
+        }
+        ul li {
+            color: $textColor;
+        }
+    }
+}
+.swiper-pagination {
+    bottom: 0;
+    padding-bottom: 10px;
+}
