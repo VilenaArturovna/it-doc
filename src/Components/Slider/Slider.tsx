@@ -36,13 +36,16 @@ export const Slider = () => {
             onReachEnd={() => console.log('Swiper end reached')}>
             <SwiperSlide tag='li'>
                 <img src={slide1}/>
-                <div className={'contentSlider ' + styleContainer.container}><h2>Уникальное предложение</h2>
-                    <div>Особые условия обслуживания картриджей для печатной техники</div>
+                <div className={'contentSlider ' + styleContainer.container}>
+                    <strong>Уникальное предложение</strong>
+                    <div>Особые условия обслуживания картриджей для печатной техники <span>*</span></div>
                     <ul>
-                        <li>НОВЫЙ картридж после третьего обращения</li>
-                        <li>Фиксированная цена даже если картридж требует восстановления</li>
-                        <li>Нет необходимости покупать новый картридж</li>
+                        <li><span>НОВЫЙ картридж после третьего обращения</span></li>
+                        <li><span>Фиксированная цена даже если картридж требует восстановления</span></li>
+                        <li><span>Нет необходимости покупать новый картридж</span></li>
                     </ul>
+                    <a href="" >Оставить заявку</a>
+                    <div className={'restriction'}><span>*</span> Предложение действительно только до конца мая 2021 года</div>
                 </div>
             </SwiperSlide>
             <SwiperSlide tag='li'><img src={slide1}/></SwiperSlide>
