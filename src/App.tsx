@@ -10,6 +10,8 @@ import {Block3} from "./Components/Block3/Block3";
 import {FeedbackForm} from "./Components/Feedback/FeedbackForm";
 import {Slider} from "./Components/Slider/Slider";
 import {Nav} from "./Components/Nav/Nav";
+import {Main} from "./Components/Main/Main";
+import {Block4} from "./Components/Block4/Block4";
 
 function App() {
     return (
@@ -17,13 +19,15 @@ function App() {
             <Header/>
             <Nav />
             <Slider />
+            <Main />
+            <Block2 />
+            <Block4/>
             {/*<Intro/>
             <Block1 />
-            <Block2 />
             <Contacts/>
             <FeedbackForm />
-            <Block3 />
-            <Footer/>*/}
+            <Block3 />*/}
+            <Footer/>
         </div>
     );
 }
