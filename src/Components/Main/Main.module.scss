@@ -3,9 +3,10 @@
 
 .container {
   flex-wrap: nowrap;
+  height: 45vh;
 
   img {
-    max-width: 400px;
+    max-height: 90%;
   }
   h2 {
     @include text(2rem, 600, 1.4);

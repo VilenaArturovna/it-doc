@@ -12,6 +12,7 @@ import {Slider} from "./Components/Slider/Slider";
 import {Nav} from "./Components/Nav/Nav";
 import {Main} from "./Components/Main/Main";
 import {Block4} from "./Components/Block4/Block4";
+import {Prices} from "./Components/Prices/Prices";
 
 function App() {
     return (
@@ -21,6 +22,7 @@ function App() {
             <Slider />
             <Main />
             <Block2 />
+            <Prices />
             <Block4/>
             {/*<Intro/>
             <Block1 />
