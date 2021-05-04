@@ -1,6 +1,6 @@
 import styleContainer from './../../Common/Styles/Container.module.css'
 import style from './Block2.module.scss'
-import cartridge from './../../Assets/Images/kartridj_gg_1.png'
+import cartridge from './../../Assets/Images/kartridj_gg_2.png'
 
 export const Block2 = () => {
     return (

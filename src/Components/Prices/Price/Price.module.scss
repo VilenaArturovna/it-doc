@@ -1,0 +1,27 @@
+.item {
+  width: fit-content;
+  /*max-width: 30% content-box;*/ /*можно добавить content-box, чтобы ширина была по контенту*/
+  background-color: beige;
+  padding: 10px;
+  margin: 10px;
+
+  h3 {
+    margin: 0 auto;
+    text-align: center;
+    font-weight: 400;
+    font-size: 2.5rem;
+    line-height: 1.76666667;
+
+  }
+
+  p {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    line-height: 1.2;
+  }
+
+  ul li span {
+    color: black;
+  }
+}
