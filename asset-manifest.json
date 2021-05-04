@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/it-doc/static/css/main.15e3390f.chunk.css",
+    "main.css": "/it-doc/static/css/main.1554fc20.chunk.css",
     "main.js": "/it-doc/static/js/main.4b8e0278.chunk.js",
     "main.js.map": "/it-doc/static/js/main.4b8e0278.chunk.js.map",
     "runtime-main.js": "/it-doc/static/js/runtime-main.d498910c.js",
@@ -12,7 +12,7 @@
     "static/js/3.92a0c00e.chunk.js.map": "/it-doc/static/js/3.92a0c00e.chunk.js.map",
     "index.html": "/it-doc/index.html",
     "static/css/2.740347aa.chunk.css.map": "/it-doc/static/css/2.740347aa.chunk.css.map",
-    "static/css/main.15e3390f.chunk.css.map": "/it-doc/static/css/main.15e3390f.chunk.css.map",
+    "static/css/main.1554fc20.chunk.css.map": "/it-doc/static/css/main.1554fc20.chunk.css.map",
     "static/js/2.bb457134.chunk.js.LICENSE.txt": "/it-doc/static/js/2.bb457134.chunk.js.LICENSE.txt",
     "static/media/IT Doc Team.79b5d149.png": "/it-doc/static/media/IT Doc Team.79b5d149.png",
     "static/media/Ricoh_partner.5adca022.png": "/it-doc/static/media/Ricoh_partner.5adca022.png",
@@ -25,7 +25,7 @@
     "static/js/runtime-main.d498910c.js",
     "static/css/2.740347aa.chunk.css",
     "static/js/2.bb457134.chunk.js",
-    "static/css/main.15e3390f.chunk.css",
+    "static/css/main.1554fc20.chunk.css",
     "static/js/main.4b8e0278.chunk.js"
   ]
 }
