@@ -2,7 +2,7 @@
 @import "./../../Common/sass/Mixins";
 
 .block {
-    height: 50vh;
+    height: auto;
     background-color: $bgSecondColor;
 
     img {
@@ -13,9 +13,9 @@
     }
 
     h2 {
-        @include text(2rem, 600, 1.4);
+        @include text(2.7rem, 600, 1.4);
     }
     ul li {
-        @include text(1.3rem, 400, 2);
+        @include text(2rem, 400, 1.6);
     }
 }

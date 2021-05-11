@@ -8,13 +8,13 @@ export function Footer() {
     return (
         <footer className={style.footer}>
             <div className={`${styleContainer.container} ${style.footerContainer}`}>
-                <div>
+                {/*<div>
                     Map of site
-                </div>
+                </div>*/}
                 <div>
                     <YaMap />
                 </div>
-                <div className={style.contacts}>
+                <div className={style.contacts} id={'contacts'}>
                     <span>г. Омск</span>
                     <span>ул. Голика, 2</span>
                     <span>Телефон: <a href={'tel:+7381237-85-02'}>+7 (3812) 37-85-02</a></span>

@@ -1,6 +1,8 @@
 .container {
-  margin-top: 20px;
+  margin: 20px auto;
   flex-wrap: nowrap;
-  height: 45vh;
+  height: auto;
   align-items: start;
+  overflow: hidden;
 }
+

@@ -1,27 +1,37 @@
 .item {
-  width: fit-content;
-  /*max-width: 30% content-box;*/ /*можно добавить content-box, чтобы ширина была по контенту*/
+  width: 32%;
+  height: 520px;
+  /*max-width: 30% content-box;*/
+  /*можно добавить content-box, чтобы ширина была по контенту*/
   background-color: beige;
   padding: 10px;
   margin: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   h3 {
     margin: 0 auto;
     text-align: center;
     font-weight: 400;
     font-size: 2.5rem;
-    line-height: 1.76666667;
-
   }
 
   p {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin-top: 0.7rem;
+    margin-bottom: 0.7rem;
+    padding: 0 0.5rem;
     font-size: 1.1rem;
     line-height: 1.2;
+    text-align: justify;
   }
 
-  ul li span {
-    color: black;
+  ul {
+    margin-top: 0.7rem;
+    margin-bottom: 0.7rem;
+
+    li span {
+      color: black;
+    }
   }
 }

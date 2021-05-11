@@ -10,7 +10,7 @@ export const Header = () => {
             <div className={styles.headerContainer + ' ' + styleContainer.container}>
                 <img src={logo} className={styles.logo} alt=""/>
                 <img src={logoRicoh} className={styles.logo} alt=""/>
-                <a href="">Контакты</a>
+                <a href="#contacts">Контакты</a>
                 <span><a href={'tel:+7381237-85-02'}>8 (3812) 37-85-03</a></span>
                 <span>Пн-Пт<br/>8:00-18:00</span>
             </div>

@@ -23,8 +23,8 @@ function App() {
             <Main />
             <Block2 />
             <Prices />
-            <Block4/>
-            {/*<Intro/>
+            {/*<Block4/>
+            <Intro/>
             <Block1 />
             <Contacts/>
             <FeedbackForm />
