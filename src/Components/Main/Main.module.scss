@@ -3,19 +3,24 @@
 
 .container {
   flex-wrap: nowrap;
-  height: 45vh;
+  height: auto;
+  padding-bottom: 10px;
 
   img {
-    max-height: 90%;
+    max-height: 45vh;
   }
+
   h2 {
     @include text(2rem, 600, 1.4);
     color: $textSecondColor
   }
+
   ul li {
     font-size: 1.3em;
+
     span {
       font-weight: 700;
-    color: $textSecondColor
-  }}
+      color: $textSecondColor
+    }
+  }
 }

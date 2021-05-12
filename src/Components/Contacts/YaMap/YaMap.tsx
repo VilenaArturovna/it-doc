@@ -14,7 +14,7 @@ export const YaMap = () => {
                className={style.mapDescription1}>
                 Информационная безопасность в Омске</a>
             <iframe src="https://yandex.ru/map-widget/v1/-/CCUM5LUicD" height="400" frameBorder="1"
-                    allowFullScreen={true} className={style.iframe} ></iframe>
+                    allowFullScreen={true}></iframe>
         </div>
     )
 }

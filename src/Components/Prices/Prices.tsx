@@ -55,7 +55,7 @@ const orders: Array<OrderType> = [
 
 export const Prices = () => {
     return (
-        <div className={'pricesBlock'}>
+        <div className={styles.pricesBlock}>
             <div className={styles.container + ' ' + styleContainer.container}>
                 {orders.map((o, i) => {
                         return <Price title={o.title}

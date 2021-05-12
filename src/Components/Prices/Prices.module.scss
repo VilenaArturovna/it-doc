@@ -1,8 +1,11 @@
-.container {
-  margin: 20px auto;
-  flex-wrap: nowrap;
-  height: auto;
-  align-items: start;
-  overflow: hidden;
-}
+.pricesBlock {
+  background-color: darkgray;
 
+  .container {
+    padding: 20px;
+    flex-wrap: nowrap;
+    height: auto;
+    align-items: start;
+    overflow: hidden;
+  }
+}

@@ -1,14 +1,20 @@
 .item {
   width: 32%;
   height: 520px;
-  /*max-width: 30% content-box;*/
-  /*можно добавить content-box, чтобы ширина была по контенту*/
   background-color: beige;
   padding: 10px;
   margin: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  opacity: 0.6;
+  transition: all 1.2s ease-out;
+
+  &:hover {
+    opacity: 1;
+    background-color: burlywood;
+    transform: scale(1.05);
+  }
 
   h3 {
     margin: 0 auto;

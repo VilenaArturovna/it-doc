@@ -23,9 +23,9 @@ function App() {
             <Main />
             <Block2 />
             <Prices />
-            {/*<Block4/>
-            <Intro/>
             <Block1 />
+            <Block4/>
+            {/*<Intro/>
             <Contacts/>
             <FeedbackForm />
             <Block3 />*/}

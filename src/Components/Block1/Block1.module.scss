@@ -1,15 +1,24 @@
 @import "./../../Common/sass/Variables";
+@import "./../../Common/sass/Mixins";
 
 .block {
-    height: 70vh;
-    background-color: $bgSecondColor;
-    .iconBlock {
-        max-width: 300px;
+  height: auto;
+
+  h2 {
+    @include text(2rem, 600, 1.4);
+    color: black;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: row;
+
+    div {
+      padding: 25px;
+
+      h3 span {
+        color: orange;
+      }
     }
-    .about {
-        text-align: justify;
-        color: $textColor;
-        font-size: 24px;
-        width: 50%;
-    }
+  }
 }
