@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/it-doc/static/css/main.bdbf8317.chunk.css",
-    "main.js": "/it-doc/static/js/main.6db81538.chunk.js",
-    "main.js.map": "/it-doc/static/js/main.6db81538.chunk.js.map",
-    "runtime-main.js": "/it-doc/static/js/runtime-main.f6ac2ee2.js",
-    "runtime-main.js.map": "/it-doc/static/js/runtime-main.f6ac2ee2.js.map",
+    "main.css": "/it-doc/static/css/main.7e2bd567.chunk.css",
+    "main.js": "/it-doc/static/js/main.bfaef078.chunk.js",
+    "main.js.map": "/it-doc/static/js/main.bfaef078.chunk.js.map",
+    "runtime-main.js": "/it-doc/static/js/runtime-main.91775305.js",
+    "runtime-main.js.map": "/it-doc/static/js/runtime-main.91775305.js.map",
     "static/css/2.740347aa.chunk.css": "/it-doc/static/css/2.740347aa.chunk.css",
-    "static/js/2.36f95931.chunk.js": "/it-doc/static/js/2.36f95931.chunk.js",
-    "static/js/2.36f95931.chunk.js.map": "/it-doc/static/js/2.36f95931.chunk.js.map",
-    "static/js/3.661f6289.chunk.js": "/it-doc/static/js/3.661f6289.chunk.js",
-    "static/js/3.661f6289.chunk.js.map": "/it-doc/static/js/3.661f6289.chunk.js.map",
+    "static/js/2.21f0f4ef.chunk.js": "/it-doc/static/js/2.21f0f4ef.chunk.js",
+    "static/js/2.21f0f4ef.chunk.js.map": "/it-doc/static/js/2.21f0f4ef.chunk.js.map",
+    "static/js/3.f009538e.chunk.js": "/it-doc/static/js/3.f009538e.chunk.js",
+    "static/js/3.f009538e.chunk.js.map": "/it-doc/static/js/3.f009538e.chunk.js.map",
     "index.html": "/it-doc/index.html",
     "static/css/2.740347aa.chunk.css.map": "/it-doc/static/css/2.740347aa.chunk.css.map",
-    "static/css/main.bdbf8317.chunk.css.map": "/it-doc/static/css/main.bdbf8317.chunk.css.map",
-    "static/js/2.36f95931.chunk.js.LICENSE.txt": "/it-doc/static/js/2.36f95931.chunk.js.LICENSE.txt",
+    "static/css/main.7e2bd567.chunk.css.map": "/it-doc/static/css/main.7e2bd567.chunk.css.map",
+    "static/js/2.21f0f4ef.chunk.js.LICENSE.txt": "/it-doc/static/js/2.21f0f4ef.chunk.js.LICENSE.txt",
     "static/media/IT Doc Team.79b5d149.png": "/it-doc/static/media/IT Doc Team.79b5d149.png",
     "static/media/Ricoh_partner.5adca022.png": "/it-doc/static/media/Ricoh_partner.5adca022.png",
     "static/media/horizontal_on_transparent_2000x899px_by_logaster.afdeba5c.png": "/it-doc/static/media/horizontal_on_transparent_2000x899px_by_logaster.afdeba5c.png",
@@ -22,10 +22,10 @@
     "static/media/слайдер_2_.a6bcfd8d.jpg": "/it-doc/static/media/слайдер_2_.a6bcfd8d.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.f6ac2ee2.js",
+    "static/js/runtime-main.91775305.js",
     "static/css/2.740347aa.chunk.css",
-    "static/js/2.36f95931.chunk.js",
-    "static/css/main.bdbf8317.chunk.css",
-    "static/js/main.6db81538.chunk.js"
+    "static/js/2.21f0f4ef.chunk.js",
+    "static/css/main.7e2bd567.chunk.css",
+    "static/js/main.bfaef078.chunk.js"
   ]
 }
