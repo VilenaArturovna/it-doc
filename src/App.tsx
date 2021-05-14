@@ -13,11 +13,12 @@ import {Nav} from "./Components/Nav/Nav";
 import {Main} from "./Components/Main/Main";
 import {Block4} from "./Components/Block4/Block4";
 import {Prices} from "./Components/Prices/Prices";
+import {Warehouse} from "./Warehouse/Warehouse";
 
 function App() {
     return (
         <div className="App">
-            <Header/>
+            {/*<Header/>
             <Nav />
             <Slider />
             <Main />
@@ -25,11 +26,13 @@ function App() {
             <Prices />
             <Block1 />
             <Block4/>
-            {/*<Intro/>
+            <Intro/>
             <Contacts/>
             <FeedbackForm />
-            <Block3 />*/}
-            <Footer/>
+            <Block3 />
+            <Footer/>*/}
+            <Warehouse />
+
         </div>
     );
 }
