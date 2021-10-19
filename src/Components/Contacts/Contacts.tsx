@@ -1,6 +1,6 @@
 import React from "react";
 import style from './Contacts.module.scss'
-import {YaMap} from "./YaMap/YaMap";
+import {YaMap} from '../Footer/components/YaMap';
 import styleContainer from './../../Common/Styles/Container.module.css'
 import {FormContacts} from "./FormContacts/FormContacts";
 import bg from './../../Common/Images/tild3366-6633-4839-a638-633363316466__1.jpg'

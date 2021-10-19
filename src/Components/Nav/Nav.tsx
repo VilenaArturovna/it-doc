@@ -1,23 +1,65 @@
-import React from "react";
-import styles from './Nav.module.scss'
-import styleContainer from './../../Common/Styles/Container.module.css'
+import React from 'react';
+import styled from 'styled-components';
 
 export const Nav = () => {
     return (
-        <div className={styles.nav}>
-            <div className={styles.container + ' ' + styleContainer.container}>
-                <div className={styles.menu}>
-                    <a href="">Главная</a>
-                    <a href="">Наши предложения</a>
-                    <a href="">Акции</a>
-                    <a href="">Партнерам</a>
-                    <a href="">О нас</a>
-                </div>
-                <div className={styles.navBtns}>
-                    <div className={styles.signIn + ' ' + styles.navBtn}><a role={'button'} href="" >Войти</a></div>
-                    <div className={styles.order + ' ' + styles.navBtn}><a role={'button'} href="">Проверить <br/>статус заказа</a></div>
-                </div>
-            </div>
-        </div>
+        <Root>
+            <Container>
+                <Menu>
+                    <MenuItem href="">Главная</MenuItem>
+                    <MenuItem href="">Наши предложения</MenuItem>
+                    <MenuItem href="">Акции</MenuItem>
+                    <MenuItem href="">Партнерам</MenuItem>
+                    <MenuItem href="">О нас</MenuItem>
+                </Menu>
+                <Buttons>
+                    <SignInButton>
+                        <MenuItem role={'button'} href="" >Войти</MenuItem>
+                    </SignInButton>
+                    <OrderButton>
+                        <MenuItem role={'button'} href="">Проверить <br/>статус заказа</MenuItem>
+                    </OrderButton>
+                </Buttons>
+            </Container>
+        </Root>
     )
 }
+
+const Root = styled.nav`
+    height: 70px;
+    background-color: ${({ theme: { colors } }) => colors.textSecondColor};
+`
+const Container = styled.div`
+    display: flex;
+    justify-content: space-between;
+  ${({ theme: { container } }) => container}
+`;
+const Menu = styled.div`
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+`
+const MenuItem = styled.a`
+    color: ${({ theme: { colors } }) => colors.textColor};
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.25em;
+`
+const Buttons = styled.div`
+    height: 100%;
+    display: flex;
+`
+const Button = styled.div`
+    height: 100%;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    display: flex;
+    align-items: center;
+`
+const SignInButton = styled(Button)`
+    background-color: ${({ theme: { colors } }) => colors.btnSecondColor};
+`
+const OrderButton = styled(Button)`
+    background-color: ${({ theme: { colors } }) => colors.btnColor};
+    text-align: center;
+`

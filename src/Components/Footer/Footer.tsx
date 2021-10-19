@@ -1,33 +1,51 @@
-import React from "react";
-import style from './Footer.module.scss'
-import styleContainer from "../../Common/Styles/Container.module.css";
-import {YaMap} from "../Contacts/YaMap/YaMap";
-
+import React from 'react';
+import { YaMap } from './components/YaMap';
+import styled from 'styled-components';
 
 export function Footer() {
-    return (
-        <footer className={style.footer}>
-            <div className={`${styleContainer.container} ${style.footerContainer}`}>
-                {/*<div>
-                    Map of site
-                </div>*/}
-                <div>
-                    <YaMap />
-                </div>
-                <div className={style.contacts} id={'contacts'}>
-                    <span>г. Омск</span>
-                    <span>ул. Голика, 2</span>
-                    <span>Телефон: <a href={'tel:+7381237-85-02'}>+7 (3812) 37-85-02</a></span>
-                    <span><a href="mailto:info@etcom.ru">info@etcom.ru</a></span>
-                    <span>Понедельник – Пятница 08:00–17:00,<br/> без перерыва на обед, <br/>Суббота, Воскресенье - выходной</span>
-                </div>
-            </div>
-
-
-                {/*<h2>Vilena Sazanova</h2>
-                <div className={style.social}>---social icons---</div>
-                <div><time>2021</time> All rights reserved</div>*/}
-
-        </footer>
-    )
+  return (<Root>
+      <Container>
+        <div>
+          <YaMap/>
+        </div>
+        <Contacts id={'contacts'}>
+          <ContactsText>г. Омск</ContactsText>
+          <ContactsText>ул. Голика, 2</ContactsText>
+          <ContactsText>Телефон: <ContactsRef href={'tel:+7381237-85-03'}>+7 (3812)
+            37-85-03</ContactsRef></ContactsText>
+          <ContactsText><ContactsRef href="mailto:info@itdoc55.ru">info@itdoc55.ru</ContactsRef></ContactsText>
+          <ContactsText>Понедельник – Пятница 08:00–18:00,<br/> без перерыва на обед, <br/>Суббота, Воскресенье -
+            выходной</ContactsText>
+        </Contacts>
+      </Container>
+    </Root>);
 }
+
+const Root = styled.div`
+  background-color: ${({ theme: { colors } }) => colors.bgSecondColor};
+  min-height: 200px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+`;
+const Container = styled.div`
+  ${({ theme: { container } }) => container}
+`;
+const Contacts = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+const ContactsText = styled.span`
+  font-family: "Rubik", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.8;
+  color: ${({ theme: { colors } }) => colors.textColor};
+`;
+const ContactsRef = styled.a`
+  color: ${({ theme: { colors } }) => colors.textColor};
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;
