@@ -1,16 +1,16 @@
 import React from "react";
-import style from './Intro.module.scss'
 import logotype from './../../Common/Images/horizontal_on_transparent_2000x899px_by_logaster.png'
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faCloudDownloadAlt, faMobileAlt, faEnvelopeOpen} from "@fortawesome/free-solid-svg-icons";
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faCloudDownloadAlt, faEnvelopeOpen, faMobileAlt} from "@fortawesome/free-solid-svg-icons";
 import Particles from "react-particles-js";
+import styled from "styled-components";
 
 export const Intro = () => {
     return (
-        <section className={style.intro}>
-            <div className={style.logotype}>
-                <Particles className={style.particles}
+        <Root>
+            <Logotype >
+                <StyledParticles
                     params={{
                         "particles": {
                             "number": {
@@ -29,18 +29,66 @@ export const Intro = () => {
                             }
                         }
                     }} />
-                <img src={logotype} className={style.logoImage} alt=""/>
+                <Logo src={logotype} alt=""/>
 
-                <button color={"secondary"} className={style.btn}>Статус заказа</button>
-                <button color={"secondary"} className={style.btn}>Перейти в каталог услуг</button>
-                <hr className={style.hr}/>
-                <div className={style.iconsBlock}>
-                    <FontAwesomeIcon icon={faEnvelopeOpen} className={style.icon}/>
-                    <FontAwesomeIcon icon={faMobileAlt} className={style.icon}/>
-                    <FontAwesomeIcon icon={faCloudDownloadAlt} className={style.icon}/>
-                </div>
+                <Button color={"secondary"} >Статус заказа</Button>
+                <Button color={"secondary"} >Перейти в каталог услуг</Button>
+                <Line/>
+                <IconsBlock>
+                    <Icon icon={faEnvelopeOpen} />
+                    <Icon icon={faMobileAlt} />
+                    <Icon icon={faCloudDownloadAlt} />
+                </IconsBlock>
 
-            </div>
-        </section>
+            </Logotype>
+        </Root>
     )
 }
+
+const Root = styled.section`
+    height: 75vh;
+    background: linear-gradient(75deg, cornflowerblue, darkcyan);
+`
+const Logotype = styled.div`
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: space-evenly;
+`
+const StyledParticles = styled(Particles)`
+    position: absolute;
+    height: 75vh;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0.4;
+    z-index: 0;
+`
+const Logo  = styled.img`
+    width: 600px;
+    padding: 50px 0;
+    z-index: 1;
+`
+const Button = styled.button`
+    margin: 10px;
+`
+const Line = styled.hr`
+    width: 70%;
+    height: 1px;
+    margin: 20px 10px;
+    background-color: white;
+    border: none;
+`
+const IconsBlock = styled.div`
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
+    z-index: 2;
+`
+const Icon = styled(FontAwesomeIcon)`
+    font-size: 3rem;
+    color: ${({ theme: { colors } }) => colors.bgMainColor};
+`

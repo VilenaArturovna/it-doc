@@ -17,7 +17,7 @@ export const defaultTheme = {
     font-size: $fontSize;
     font-weight: $fontWeight;
     line-height: $lineHeight;
-    color: $textColor;
+    color: ${({ theme: { colors } }) => colors.textColor};
     `,
   container: `
     width: 1200px;

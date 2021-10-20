@@ -1,6 +1,5 @@
-import {Price} from "./Price/Price";
-import styleContainer from './../../Common/Styles/Container.module.css'
-import styles from './Prices.module.scss'
+import {Price} from "./Price";
+import styled from "styled-components";
 
 export type OrderType = {
     title: string
@@ -55,8 +54,8 @@ const orders: Array<OrderType> = [
 
 export const Prices = () => {
     return (
-        <div className={styles.pricesBlock}>
-            <div className={styles.container + ' ' + styleContainer.container}>
+        <Root >
+            <Container >
                 {orders.map((o, i) => {
                         return <Price title={o.title}
                                       description={o.description}
@@ -66,7 +65,19 @@ export const Prices = () => {
                                       key={i}/>
                     }
                 )}
-            </div>
-        </div>
+            </Container>
+        </Root>
     )
 }
+
+const Root = styled.div`
+    background-color: darkgray;
+`
+const Container = styled.div`
+    padding: 20px;
+    flex-wrap: nowrap;
+    height: auto;
+    align-items: start;
+    overflow: hidden;
+  ${({ theme: { container } }) => container}
+`;

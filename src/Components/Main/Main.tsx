@@ -1,26 +1,49 @@
 import logo from './../../Assets/Images/IT Doc Team.png'
 import styleContainer from './../../Common/Styles/Container.module.css'
 import styles from './Main.module.scss'
-
-
+import styled from "styled-components";
 
 export const Main = () => {
 
     return (
         <section>
-            <div className={styles.container + ' ' + styleContainer.container}>
-                <img src={logo} alt="logo"/>
+            <Container>
+                <Logo src={logo} alt="logo"/>
                 <div>
-                    <h2>5 причин, почему следует выбрать нас</h2>
+                    <Title>5 причин, почему следует выбрать нас</Title>
                     <ul>
-                        <li><span>It Doc</span> – это команда высококвалифицированных специалистов</li>
-                        <li>Мы предлагаем ПОЛНЫЙ спектр услуг от заправки картриджа, до сложных электронных ремонтов <b>ЛЮБОЙ</b> офисной техники</li>
-                        <li>Наличие профессионального оборудования, для ремонта  и обслуживания офисной техники, а так же <b>огромный опыт</b></li>
-                        <li>Вы сможете снять вопрос содержания и ремонта офисной техники, имея <span>ОДНОГО ПАРТНЁРА</span> в лице <span>It Doc</span></li>
-                        <li><b>Прозрачное</b> и понятное ценообразование</li>
+                        <ListItem><BoldText>It Doc</BoldText> – это команда высококвалифицированных специалистов</ListItem>
+                        <ListItem>Мы предлагаем ПОЛНЫЙ спектр услуг от заправки картриджа, до сложных электронных ремонтов <b>ЛЮБОЙ</b> офисной техники</ListItem>
+                        <ListItem>Наличие профессионального оборудования, для ремонта  и обслуживания офисной техники, а так же <b>огромный опыт</b></ListItem>
+                        <ListItem>Вы сможете снять вопрос содержания и ремонта офисной техники, имея <BoldText>ОДНОГО ПАРТНЁРА</BoldText> в лице <BoldText>It Doc</BoldText></ListItem>
+                        <ListItem><b>Прозрачное</b> и понятное ценообразование</ListItem>
                     </ul>
                 </div>
-            </div>
+            </Container>
         </section>
     )
 }
+
+const Container = styled.div`
+    flex-wrap: nowrap;
+    height: auto;
+    padding-bottom: 10px;
+  ${({ theme: { container } }) => container}
+`;
+const Logo = styled.img`
+    max-height: 45vh;
+`
+const Title = styled.h2`
+    font-family: "Rubik", sans-serif;
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.4;
+    color: ${({ theme: { colors } }) => colors.textSecondColor};
+`
+const ListItem = styled.li`
+    font-size: 1.3em;
+`
+const BoldText = styled.span`
+    font-weight: 700;
+    color: ${({ theme: { colors } }) => colors.textSecondColor};
+`

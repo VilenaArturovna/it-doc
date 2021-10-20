@@ -1,12 +1,19 @@
-import styleContainer from './../../Common/Styles/Container.module.css'
-import style from './Block4.module.scss'
+import styled from "styled-components";
 
 export const Block4 = () => {
     return (
-        <div className={style.block}>
-            <div className={styleContainer.container}>
+        <Root >
+            <Container >
 
-            </div>
-        </div>
+            </Container>
+        </Root>
     )
 }
+
+const Root = styled.div`
+  height: 50vh;
+  background-color: #22272b;
+`
+const Container = styled.div`
+  ${({ theme: { container } }) => container}
+`;

@@ -1,15 +1,14 @@
 import React from 'react'
-import styleContainer from './../../Common/Styles/Container.module.css'
-import styles from './Block1.module.scss'
+import styled from "styled-components";
 
 export const Block1 = () => {
     return (
-        <div className={styles.block}>
-            <div className={styleContainer.container}>
-                <h2>Также мы выполним для Вас</h2>
-                <div className={styles.content}>
-                    <div>
-                        <h3>Ремонт <span>печатной техники</span></h3>
+        <Root>
+            <Container>
+                <Title>Также мы выполним для Вас</Title>
+                <Content>
+                    <ContentBlock>
+                        <h3>Ремонт <OrangeText>печатной техники</OrangeText></h3>
                         <p>Ремонты любой сложности от технического обслуживания до сложных ремонтов электронных
                             компонентов к Вашим услугам</p>
                         <ul>
@@ -19,14 +18,38 @@ export const Block1 = () => {
                             <li>Самые популярные и ходовые запчасти в наличии на складе</li>
                             <li>Собственный автопарк позволяет нам быстро добраться к Вам</li>
                         </ul>
-                    </div>
-                    <div>
-                        <h3>Ремонт <span>любой офисной техники</span></h3>
+                    </ContentBlock>
+                    <ContentBlock>
+                        <h3>Ремонт <OrangeText>любой офисной техники</OrangeText></h3>
                         <p>Ремонты офисной, компьютерной техники от замены клавиатуры на Вашем ноутбуке до замены
                             микрочипа сервера</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+                    </ContentBlock>
+                </Content>
+            </Container>
+        </Root>
     )
 }
+
+const Root = styled.div`
+    height: auto;
+`
+const Container = styled.div`
+  ${({ theme: { container } }) => container}
+`;
+const Title = styled.h2`
+    font-family: "Rubik", sans-serif;
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.4;
+    color: black;
+`
+const Content = styled.div`
+    display: flex;
+    flex-direction: row;
+`
+const ContentBlock = styled.div`
+    padding: 25px;
+`
+const OrangeText = styled.span`
+    color: orange;
+`
