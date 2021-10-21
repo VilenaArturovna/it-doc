@@ -1,6 +1,0 @@
-mysql
-user: ci31365_itdoc
-pass: HbLR04Ex
-
-wp
-itdoc : 5FpkaPPH64pNNUbc)z

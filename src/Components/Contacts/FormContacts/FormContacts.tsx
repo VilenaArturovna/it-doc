@@ -1,40 +1,82 @@
-import style from './FormContacts.module.scss'
-import React from "react";
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faAt, faBuilding, faBusinessTime, faMobileAlt} from "@fortawesome/free-solid-svg-icons";
+import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAt, faBuilding, faBusinessTime, faMobileAlt } from '@fortawesome/free-solid-svg-icons';
+import styled from 'styled-components';
 
 export const FormContacts = () => {
-    return (
-        <div className={style.form}>
-            <h2>Контактная информация</h2>
-            <div className={style.contactsContainer}>
-                <div className={style.contactItem}>
-                    <div className={style.iconBlock}>
-                        <FontAwesomeIcon icon={faBuilding} className={style.icon}/>
-                    </div>
-                    <span>ул. Голика, 2</span>
-                </div>
-                <div className={style.contactItem}>
-                    <div className={style.iconBlock}>
-                        <FontAwesomeIcon icon={faMobileAlt} className={style.icon}/>
-                    </div>
-                    <span>Телефон: <a href={'tel:+7381237-85-02'}>+7 (3812) 37-85-03</a></span>
-                </div>
-                <div className={style.contactItem}>
-                    <div className={style.iconBlock}>
-                        <FontAwesomeIcon icon={faAt} className={style.icon}/>
-                    </div>
-                    <span><a href="mailto:info@itdoc55.ru">info@etcom.ru</a></span>
-                </div>
-                <div className={style.contactItem}>
-                    <div className={style.iconBlock}>
-                        <FontAwesomeIcon icon={faBusinessTime} className={style.icon}/>
-                    </div>
-                    <span>пн - пт 08:00–17:00, без перерыва <br/>на обед, сб, вс - выходной</span>
-                </div>
+  return (<Root>
+      <h2>Контактная информация</h2>
+      <Container>
+        <ContactItem>
+          <IconBlock>
+            <Icon icon={faBuilding}/>
+          </IconBlock>
+          <Text>ул. Голика, 2</Text>
+        </ContactItem>
+        <ContactItem>
+          <IconBlock>
+            <Icon icon={faMobileAlt}/>
+          </IconBlock>
+          <Text>Телефон: <Ref href={'tel:+7381237-85-03'}>+7 (3812) 37-85-03</Ref></Text>
+        </ContactItem>
+        <ContactItem>
+          <IconBlock>
+            <Icon icon={faAt}/>
+          </IconBlock>
+          <Text><Ref href="mailto:info@itdoc55.ru">info@itdoc55.ru</Ref></Text>
+        </ContactItem>
+        <ContactItem>
+          <IconBlock>
+            <Icon icon={faBusinessTime}/>
+          </IconBlock>
+          <Text>пн - пт 08:00–17:00, без перерыва <br/>на обед, сб, вс - выходной</Text>
+        </ContactItem>
 
-            </div>
-        </div>
-    )
-}
+      </Container>
+    </Root>);
+};
 
+const Root = styled.div`
+  min-width: 500px;
+  height: 400px;
+  background-color: ${({ theme: { colors } }) => colors.bgMainColor};
+  margin: 50px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+`;
+const ContactItem = styled.div`
+  width: 100%;
+  height: 50px;
+  margin-bottom: 10px;
+  background-color: ${({ theme: { colors } }) => colors.bgFormColor};
+  display: flex;
+  align-items: center;
+`;
+const IconBlock = styled.div`
+  width: 50px;
+  height: 100%;
+  background-color: ${({ theme: { colors } }) => colors.primaryColor};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+const Icon = styled(FontAwesomeIcon)`
+  font-size: 2rem;
+  color: ${({ theme: { colors } }) => colors.textColor};
+`;
+const Text = styled.span`
+  padding: 0 10px;
+  color: ${({ theme: { colors } }) => colors.textColor};
+`;
+const Ref = styled.a`
+  text-decoration: none;
+  color: ${({ theme: { colors } }) => colors.textColor};
+`;

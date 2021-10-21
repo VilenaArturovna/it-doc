@@ -1,9 +1,5 @@
-@import "./../../Common/sass/Variables";
-@import "./../../Common/sass/Mixins";
-
 .swiper-container {
   width: 100%;
-
 }
 
 .swiper-button-prev {
@@ -12,7 +8,7 @@
   -webkit-transform: translate(-200%, -50%);
   -ms-transform: translate(-200%, -50%);
   transform: translate(-200%, -50%);
-  color: $btnColor;
+  color: #7fba2f;
 }
 
 .swiper-button-next {
@@ -21,82 +17,13 @@
   -webkit-transform: translate(200%, -50%);
   -ms-transform: translate(200%, -50%);
   transform: translate(200%, -50%);
-  color: $btnColor;
+  color: #7fba2f;
 }
 
 .swiper-wrapper {
   padding-inline-start: 0;
   margin-block-start: 0;
   height: 400px;
-
-  .bg{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-repeat: no-repeat;
-    background-position: 50% 0;
-    img {
-    /*position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    background-position: 50% 0;*/
-  }}
-
-  .contentSlider {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-between;
-
-    strong {
-      @include text(3rem, 500, 1.04);
-      color: $btnColor;
-      padding-top: 1rem;
-    }
-
-    div {
-
-      @include text(1.5rem, 300, 1.33);
-
-
-      span {
-        color: red;
-      }
-    }
-
-    ul {
-      li {
-        color: $btnColor;
-        list-style-type: disc;
-        margin: 0 0 4px;
-        background-position: right;
-
-        span {
-          color: $textColor;
-          font-size: 1.2rem;
-        }
-      }
-    }
-      a {
-          text-decoration: none;
-          padding: 1rem 2rem;
-          background-color: $btnColor;
-          border-radius: 5px;
-          color: $textColor;
-          font-size: 1.25em;
-      }
-    .restriction {
-      font-size: 0.8em;
-      padding-bottom: 1rem;
-      span {
-        font-size: 1.5em;
-      }
-    }
-  }
 }
 
 .swiper-pagination {

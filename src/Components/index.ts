@@ -1,10 +1,12 @@
 export { Header } from './Header';
 export { Footer } from './Footer';
 export { Nav } from './Nav';
-export {Block1} from "./Block1";
-export {Block2} from "./Block2";
-export {Block3} from "./Block3";
+export {Works} from "./Works";
+export {Cartridge} from "./Cartridge";
+export {BgBlock} from "./BgBlock";
 export {Block4} from "./Block4";
 export {Intro} from "./Intro";
 export {Main} from "./Main";
 export {Prices} from "./Prices";
+export { Contacts } from './Contacts';
+export { Slider } from './Slider';

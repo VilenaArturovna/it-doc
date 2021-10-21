@@ -11,15 +11,7 @@ export const defaultTheme = {
 
 //button
     btnColor: '#7fba2f', btnSecondColor: '#2678bc',
-  },
-  text: `
-    font-family: "Rubik", sans-serif;
-    font-size: $fontSize;
-    font-weight: $fontWeight;
-    line-height: $lineHeight;
-    color: ${({ theme: { colors } }) => colors.textColor};
-    `,
-  container: `
+  }, container: `
     width: 1200px;
     height: 100%;
     margin: 0 auto;

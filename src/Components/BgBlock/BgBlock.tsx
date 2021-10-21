@@ -1,27 +1,22 @@
-import React from 'react';
-import { YaMap } from '../Footer/components/YaMap';
-import { FormContacts } from './FormContacts';
 import bg from './../../Common/Images/tild3366-6633-4839-a638-633363316466__1.jpg';
 import styled from 'styled-components';
 
-export const Contacts = () => {
+export const BgBlock = () => {
   const bgStyle = {
     backgroundImage: `url(${bg})`
   };
   return (<Root style={bgStyle}>
       <Container>
-        <YaMap/>
-        <FormContacts/>
+
       </Container>
     </Root>);
 };
 
-const Root = styled.section`
+const Root = styled.div`
+  height: 80vh;
   background-attachment: fixed;
   background-size: cover;
 `;
 const Container = styled.div`
   ${({ theme: { container } }) => container}
-  display: flex;
-  justify-content: space-around;
 `;
