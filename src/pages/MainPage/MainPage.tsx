@@ -1,4 +1,4 @@
-import { Cartridge, Main, Prices, Slider, Works } from '../../Components';
+import { Cartridge, FeedbackForm, Main, Prices, Slider, Works } from '../../Components';
 import React from 'react';
 
 export function MainPage () {
@@ -9,6 +9,7 @@ export function MainPage () {
       <Cartridge/>
       <Prices/>
       <Works/>
+      <FeedbackForm />
     </>
   )
 }

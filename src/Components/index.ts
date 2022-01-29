@@ -10,3 +10,5 @@ export {Main} from "./Main";
 export {Prices} from "./Prices";
 export { Contacts } from './Contacts';
 export { Slider } from './Slider';
+export { FeedbackForm } from './Feedback';
+

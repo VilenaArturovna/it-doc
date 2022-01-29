@@ -9,7 +9,7 @@ export const Header = () => {
       <Logo src={logo} alt=""/>
       <Logo src={logoRicoh} alt=""/>
       <Ref href="#contacts">Контакты</Ref>
-      <Contacts><TelephoneNumber href={'tel:+7381237-85-03'}>8 (3812) 37-85-03</TelephoneNumber></Contacts>
+      <Contacts><TelephoneNumber href={'tel:+7381237-85-03'}>+7 (3812) 37-85-03</TelephoneNumber></Contacts>
       <Contacts>Пн-Пт<br/>8:00-18:00</Contacts>
     </Container>
   </Root>);
