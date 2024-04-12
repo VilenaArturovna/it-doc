@@ -9,7 +9,7 @@ export const FormContacts = () => {
       <Container>
         <ContactItem>
           <IconBlock>
-            <Icon icon={faBuilding}/>
+            <Icon icon={faBuilding} />
           </IconBlock>
           <Text>ул. Голика, 2</Text>
         </ContactItem>
