@@ -21,3 +21,9 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+.env
+
+# openapi generator
+src/shared/types/api/generated
+src/shared/types/api/openapi.json
