@@ -1,15 +1,15 @@
 import { Cartridge, FeedbackForm, Main, Prices, Slider, Works } from '../../Components';
 import React from 'react';
 
-export function MainPage () {
+export function MainPage() {
   return (
     <>
-      <Slider/>
-      <Main/>
-      <Cartridge/>
-      <Prices/>
-      <Works/>
+      <Slider />
+      <Main />
+      <Cartridge />
+      <Prices />
+      <Works />
       <FeedbackForm />
     </>
-  )
+  );
 }

@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const Nav = () => {
-  return (<Root>
+  return (
+    <Root>
       <Container>
         <Menu>
           <MenuItem to={'/'}>Главная</MenuItem>
@@ -14,14 +15,20 @@ export const Nav = () => {
         </Menu>
         <Buttons>
           <SignInButton>
-            <MenuItem role={'button'} to={'/plug'}>Войти</MenuItem>
+            <MenuItem role={'button'} to={'/login'}>
+              Войти
+            </MenuItem>
           </SignInButton>
           <OrderButton>
-            <MenuItem role={'button'} to={'/plug'}>Проверить <br/>статус заказа</MenuItem>
+            <MenuItem role={'button'} to={'/plug'}>
+              Проверить <br />
+              статус заказа
+            </MenuItem>
           </OrderButton>
         </Buttons>
       </Container>
-    </Root>);
+    </Root>
+  );
 };
 
 const Root = styled.nav`

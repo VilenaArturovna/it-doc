@@ -1,1 +1,1 @@
-export {Works} from "./Works";
+export { Works } from './Works';

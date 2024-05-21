@@ -3,13 +3,13 @@ import styled from 'styled-components';
 
 export const BgBlock = () => {
   const bgStyle = {
-    backgroundImage: `url(${bg})`
+    backgroundImage: `url(${bg})`,
   };
-  return (<Root style={bgStyle}>
-      <Container>
-
-      </Container>
-    </Root>);
+  return (
+    <Root style={bgStyle}>
+      <Container></Container>
+    </Root>
+  );
 };
 
 const Root = styled.div`

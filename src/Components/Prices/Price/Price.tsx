@@ -4,16 +4,24 @@ import { Link } from 'react-router-dom';
 
 export const Price = (props: OrderType) => {
   const titleStyle = {
-    color: props.titleColor
+    color: props.titleColor,
   };
-  return (<Root>
-    <Title style={titleStyle}>{props.title}</Title>
-    <Description>{props.description}</Description>
-    <List>
-      {props.features.map((item, i) => <li key={i} style={titleStyle}><ListText>{item}</ListText></li>)}
-    </List>
-    <div><Link to={'/plug'}>Узнать, как это работает</Link></div>
-  </Root>);
+  return (
+    <Root>
+      <Title style={titleStyle}>{props.title}</Title>
+      <Description>{props.description}</Description>
+      <List>
+        {props.features.map((item, i) => (
+          <li key={i} style={titleStyle}>
+            <ListText>{item}</ListText>
+          </li>
+        ))}
+      </List>
+      <div>
+        <Link to={'/plug'}>Узнать, как это работает</Link>
+      </div>
+    </Root>
+  );
 };
 
 const Root = styled.div`

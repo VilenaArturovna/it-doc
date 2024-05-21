@@ -1,1 +1,1 @@
-export {BgBlock} from "./BgBlock";
+export { BgBlock } from './BgBlock';

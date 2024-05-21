@@ -1,1 +1,1 @@
-export {Cartridge} from "./Cartridge";
+export { Cartridge } from './Cartridge';

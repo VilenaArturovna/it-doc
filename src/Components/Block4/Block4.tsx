@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
 export const Block4 = () => {
-  return (<Root>
-      <Container>
-
-      </Container>
-    </Root>);
+  return (
+    <Root>
+      <Container></Container>
+    </Root>
+  );
 };
 
 const Root = styled.div`

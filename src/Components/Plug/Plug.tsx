@@ -3,16 +3,20 @@ import logo from '../../Assets/Images/IT Doc Team.png';
 import React from 'react';
 
 export function Plug() {
-  return (<Root>
+  return (
+    <Root>
       <Container>
-        <Logo src={logo} alt="logo"/>
+        <Logo src={logo} alt="logo" />
         <Description>
-          <Text>Сайт находится на стадии разработки. Если у Вас остались вопросы, позвоните нам по номеру телефона <Ref
-          href={'tel:+7381237-85-03'}>37-85-03</Ref></Text>
+          <Text>
+            Сайт находится на стадии разработки. Если у Вас остались вопросы, позвоните нам по номеру телефона{' '}
+            <Ref href={'tel:+7381237-85-03'}>37-85-03</Ref>
+          </Text>
           <Text>Наши специалисты ответят на интересующие Вас вопросы. Наша консультация БЕСПЛАТНА</Text>
         </Description>
       </Container>
-    </Root>);
+    </Root>
+  );
 }
 
 const Root = styled.section`
@@ -28,7 +32,7 @@ const Logo = styled.img`
 `;
 const Text = styled.div`
   width: 600px;
-  font-family: "Rubik", sans-serif;
+  font-family: 'Rubik', sans-serif;
   font-size: 1.5rem;
   font-weight: 600;
   line-height: 1.4;
@@ -38,6 +42,6 @@ const Ref = styled.a`
   color: ${({ theme: { colors } }) => colors.textSecondColor};
 `;
 const Description = styled.div`
-flex-direction: column;
+  flex-direction: column;
   text-align: justify;
-`
+`;

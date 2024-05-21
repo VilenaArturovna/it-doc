@@ -3,8 +3,9 @@ import styled from 'styled-components';
 import { useState } from 'react';
 
 type Errors = {
-  phone?: string; name?: string
-}
+  phone?: string;
+  name?: string;
+};
 
 const TOKEN = '5241071723:AAGpzQ7hH91J4OcWXdlgAzIt9tEpaRivfOg';
 const chatId = '-693884354';
@@ -12,7 +13,7 @@ const url = 'https://api.telegram.org/bot' + TOKEN + '/sendMessage';
 
 export const FeedbackForm = () => {
   const sendMessageToTelegram = async (name: string, phone: string, time: string) => {
-    const text = `<strong>${name}</strong> оставил(а) заявку на сайте. Просит связаться с ним(ней) в <strong>${time ? time + ` часов` : 'любое время'}</strong> по телефону: <strong>${phone}</strong>`
+    const text = `<strong>${name}</strong> оставил(а) заявку на сайте. Просит связаться с ним(ней) в <strong>${time ? time + ` часов` : 'любое время'}</strong> по телефону: <strong>${phone}</strong>`;
     const body = JSON.stringify({
       chat_id: chatId,
       parse_mode: 'html',
@@ -22,10 +23,10 @@ export const FeedbackForm = () => {
     const res = await fetch(url, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json;charset=utf-8'
+        'Content-Type': 'application/json;charset=utf-8',
       },
       body,
-    })
+    });
     if (res.status === 200) {
       setIsSentMessage(true);
       setTimeout(() => {
@@ -35,14 +36,15 @@ export const FeedbackForm = () => {
   };
 
   const [isSentMessage, setIsSentMessage] = useState(false);
-  return (<Root>
+  return (
+    <Root>
       <Container>
         <Title>Форма обратной связи</Title>
         <InputTitle>Оставьте свои контактные данные, и мы свяжемся с Вами</InputTitle>
         <div>
           <Formik
-            initialValues={{ phone: '', name: '', text: '', }}
-            validate={values => {
+            initialValues={{ phone: '', name: '', text: '' }}
+            validate={(values) => {
               const errors: Errors = {};
               if (!values.phone) {
                 errors.phone = 'Введите номер телефона';
@@ -58,25 +60,26 @@ export const FeedbackForm = () => {
               await sendMessageToTelegram(values.name, values.phone, values.text);
             }}
           >
-            {({ isSubmitting }) => (<FormBody>
-              <InputTitle>Ваше имя</InputTitle>
-              <Input type="text" name="name" placeholder="Имя"/>
-              <ErrorMessage name="name" />
-              <InputTitle>Ваш номер телефона</InputTitle>
-              <Input type="phone" name="phone" placeholder="Номер телефона"/>
-              <ErrorMessage name="phone" />
-              <InputTitle>В какое время Вам позвонить?</InputTitle>
-              <Input type="text" name="text" placeholder="Укажите желаемое время"/>
-              <Button type="submit" disabled={isSubmitting}>
-                Отправить
-              </Button>
-              {isSentMessage && <HelperText>Сообщение успешно отправлено</HelperText>}
-            </FormBody>)}
+            {({ isSubmitting }) => (
+              <FormBody>
+                <InputTitle>Ваше имя</InputTitle>
+                <Input type="text" name="name" placeholder="Имя" />
+                <ErrorMessage name="name" />
+                <InputTitle>Ваш номер телефона</InputTitle>
+                <Input type="phone" name="phone" placeholder="Номер телефона" />
+                <ErrorMessage name="phone" />
+                <InputTitle>В какое время Вам позвонить?</InputTitle>
+                <Input type="text" name="text" placeholder="Укажите желаемое время" />
+                <Button type="submit" disabled={isSubmitting}>
+                  Отправить
+                </Button>
+                {isSentMessage && <HelperText>Сообщение успешно отправлено</HelperText>}
+              </FormBody>
+            )}
           </Formik>
         </div>
       </Container>
     </Root>
-
   );
 };
 
@@ -84,7 +87,7 @@ const Root = styled.div`
   padding-bottom: 40px;
 `;
 const Title = styled.h2`
-  font-family: "Rubik", sans-serif;
+  font-family: 'Rubik', sans-serif;
   font-size: 2rem;
   font-weight: 600;
   color: black;
@@ -106,7 +109,9 @@ const Input = styled(Field)`
   font-size: 16px;
   line-height: 28px;
   margin: 10px 0;
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  box-shadow:
+    0 14px 28px rgba(0, 0, 0, 0.25),
+    0 10px 10px rgba(0, 0, 0, 0.22);
   border-radius: 7px;
   border: none;
   padding-left: 10px;
@@ -122,7 +127,9 @@ const Button = styled.button`
   width: 140px;
   font-size: 18px;
   line-height: 28px;
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  box-shadow:
+    0 14px 28px rgba(0, 0, 0, 0.25),
+    0 10px 10px rgba(0, 0, 0, 0.22);
   border-radius: 7px;
   border: none;
   margin: 10px 0;

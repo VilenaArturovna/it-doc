@@ -2,19 +2,22 @@ import cartridge from './../../Assets/Images/kartridj_gg_2.png';
 import styled from 'styled-components';
 
 export const Cartridge = () => {
-  return (<Root>
+  return (
+    <Root>
       <Container>
-        <Image src={cartridge} alt=""/>
+        <Image src={cartridge} alt="" />
         <Title>Профессиональный подход к обслуживанию картриджей</Title>
         <ul>
           <ListItem>Использование только высококачественных материалов</ListItem>
           <ListItem>Замена ресурсных запчастей</ListItem>
-          <ListItem>Несколько вариантов предоставления услуг, каждый подберёт для себя максимально удобные и
-            выгодные варианты сотрудничества
+          <ListItem>
+            Несколько вариантов предоставления услуг, каждый подберёт для себя максимально удобные и выгодные
+            варианты сотрудничества
           </ListItem>
         </ul>
       </Container>
-    </Root>);
+    </Root>
+  );
 };
 
 const Root = styled.div`
@@ -31,14 +34,14 @@ const Image = styled.img`
   opacity: 0.3;
 `;
 const Title = styled.h2`
-  font-family: "Rubik", sans-serif;
+  font-family: 'Rubik', sans-serif;
   font-size: 2.7rem;
   font-weight: 600;
   line-height: 1.4;
   color: ${({ theme: { colors } }) => colors.textColor};
 `;
 const ListItem = styled.li`
-  font-family: "Rubik", sans-serif;
+  font-family: 'Rubik', sans-serif;
   font-size: 2rem;
   font-weight: 400;
   line-height: 1.6;

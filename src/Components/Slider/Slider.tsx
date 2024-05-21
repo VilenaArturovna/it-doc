@@ -17,47 +17,69 @@ import { Link } from 'react-router-dom';
 SwiperCore.use([Autoplay, Navigation, Pagination]);
 
 export const Slider = () => {
-  return (<Swiper
-    id="main"
-    tag="section"
-    wrapperTag="ul"
-    navigation
-    pagination
-    autoplay={{ delay: 5000 }}
-    spaceBetween={0}
-    slidesPerView={1}
-    onInit={(swiper) => console.log('Swiper initialized!', swiper)}
+  return (
+    <Swiper
+      id="main"
+      tag="section"
+      wrapperTag="ul"
+      navigation
+      pagination
+      autoplay={{ delay: 5000 }}
+      spaceBetween={0}
+      slidesPerView={1}
+      onInit={(swiper) => console.log('Swiper initialized!', swiper)}
     >
-    <SwiperSlide tag="li">
-      <Background style={{ backgroundImage: `url(${slide1})` }}/>
-      <Content>
-        <StrongText>Уникальное предложение</StrongText>
-        <Text>Особые условия обслуживания картриджей для печатной техники <Star>*</Star></Text>
-        <ul>
-          <ListItem><ListItemText>НОВЫЙ картридж после третьего обращения</ListItemText></ListItem>
-          <ListItem><ListItemText>Фиксированная цена даже если картридж требует
-            восстановления</ListItemText></ListItem>
-          <ListItem><ListItemText>Нет необходимости покупать новый картридж</ListItemText></ListItem>
-        </ul>
-        <Ref to={'/plug'}>Оставить заявку</Ref>
-        <Text2><Star2>*</Star2> Предложение действительно только до конца 2021 года</Text2>
-      </Content>
-    </SwiperSlide>
-    <SwiperSlide tag="li">
-      <Background style={{ backgroundImage: `url(${slide2})` }}/>
-      <Content>
-        <StrongText>Только до конца года</StrongText>
-        <Text>Специальные условия логистики <br/>БЕСПЛАТНО <Star>*</Star></Text>
-        <ul>
-          <ListItem><ListItemText>Забор, доставка оборудования</ListItemText></ListItem>
-          <ListItem><ListItemText>Выезд инженера</ListItemText></ListItem>
-          <ListItem><ListItemText>Диагностика оборудования</ListItemText></ListItem>
-        </ul>
-        <Ref to={'/plug'}>Оставить заявку</Ref>
-        <Text2><Star2>*</Star2> При условии дальнейшего ремонта</Text2>
-      </Content>
-    </SwiperSlide>
-  </Swiper>);
+      <SwiperSlide tag="li">
+        <Background style={{ backgroundImage: `url(${slide1})` }} />
+        <Content>
+          <StrongText>Уникальное предложение</StrongText>
+          <Text>
+            Особые условия обслуживания картриджей для печатной техники <Star>*</Star>
+          </Text>
+          <ul>
+            <ListItem>
+              <ListItemText>НОВЫЙ картридж после третьего обращения</ListItemText>
+            </ListItem>
+            <ListItem>
+              <ListItemText>Фиксированная цена даже если картридж требует восстановления</ListItemText>
+            </ListItem>
+            <ListItem>
+              <ListItemText>Нет необходимости покупать новый картридж</ListItemText>
+            </ListItem>
+          </ul>
+          <Ref to={'/plug'}>Оставить заявку</Ref>
+          <Text2>
+            <Star2>*</Star2> Предложение действительно только до конца 2021 года
+          </Text2>
+        </Content>
+      </SwiperSlide>
+      <SwiperSlide tag="li">
+        <Background style={{ backgroundImage: `url(${slide2})` }} />
+        <Content>
+          <StrongText>Только до конца года</StrongText>
+          <Text>
+            Специальные условия логистики <br />
+            БЕСПЛАТНО <Star>*</Star>
+          </Text>
+          <ul>
+            <ListItem>
+              <ListItemText>Забор, доставка оборудования</ListItemText>
+            </ListItem>
+            <ListItem>
+              <ListItemText>Выезд инженера</ListItemText>
+            </ListItem>
+            <ListItem>
+              <ListItemText>Диагностика оборудования</ListItemText>
+            </ListItem>
+          </ul>
+          <Ref to={'/plug'}>Оставить заявку</Ref>
+          <Text2>
+            <Star2>*</Star2> При условии дальнейшего ремонта
+          </Text2>
+        </Content>
+      </SwiperSlide>
+    </Swiper>
+  );
 };
 
 const Background = styled.div`
@@ -78,7 +100,7 @@ const Content = styled.div`
   justify-content: space-between;
 `;
 const StrongText = styled.strong`
-  font-family: "Rubik", sans-serif;
+  font-family: 'Rubik', sans-serif;
   font-size: 3rem;
   font-weight: 500;
   line-height: 1.04;
@@ -86,7 +108,7 @@ const StrongText = styled.strong`
   padding-top: 1rem;
 `;
 const Text = styled.div`
-  font-family: "Rubik", sans-serif;
+  font-family: 'Rubik', sans-serif;
   font-size: 1.5rem;
   font-weight: 300;
   line-height: 1.33;

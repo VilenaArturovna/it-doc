@@ -4,7 +4,8 @@ import { faAt, faBuilding, faBusinessTime, faMobileAlt } from '@fortawesome/free
 import styled from 'styled-components';
 
 export const FormContacts = () => {
-  return (<Root>
+  return (
+    <Root>
       <h2>Контактная информация</h2>
       <Container>
         <ContactItem>
@@ -15,25 +16,32 @@ export const FormContacts = () => {
         </ContactItem>
         <ContactItem>
           <IconBlock>
-            <Icon icon={faMobileAlt}/>
+            <Icon icon={faMobileAlt} />
           </IconBlock>
-          <Text>Телефон: <Ref href={'tel:+7381237-85-03'}>+7 (3812) 37-85-03</Ref></Text>
+          <Text>
+            Телефон: <Ref href={'tel:+7381237-85-03'}>+7 (3812) 37-85-03</Ref>
+          </Text>
         </ContactItem>
         <ContactItem>
           <IconBlock>
-            <Icon icon={faAt}/>
+            <Icon icon={faAt} />
           </IconBlock>
-          <Text><Ref href="mailto:info@itdoc55.ru">info@itdoc55.ru</Ref></Text>
+          <Text>
+            <Ref href="mailto:info@itdoc55.ru">info@itdoc55.ru</Ref>
+          </Text>
         </ContactItem>
         <ContactItem>
           <IconBlock>
-            <Icon icon={faBusinessTime}/>
+            <Icon icon={faBusinessTime} />
           </IconBlock>
-          <Text>пн - пт 08:00–17:00, без перерыва <br/>на обед, сб, вс - выходной</Text>
+          <Text>
+            пн - пт 08:00–17:00, без перерыва <br />
+            на обед, сб, вс - выходной
+          </Text>
         </ContactItem>
-
       </Container>
-    </Root>);
+    </Root>
+  );
 };
 
 const Root = styled.div`

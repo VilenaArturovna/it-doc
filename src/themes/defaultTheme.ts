@@ -1,17 +1,23 @@
 export const defaultTheme = {
   colors: {
     //text
-    textColor: '#FFF', textSecondColor: '#006699', textThirdColor: '#000',
+    textColor: '#FFF',
+    textSecondColor: '#006699',
+    textThirdColor: '#000',
 
-//primary
+    //primary
     primaryColor: '#2678bc',
 
-//background
-    bgMainColor: '#697d8c', bgSecondColor: '#006699', bgThirdColor: '#f2f5fb',
+    //background
+    bgMainColor: '#697d8c',
+    bgSecondColor: '#006699',
+    bgThirdColor: '#f2f5fb',
 
-//button
-    btnColor: '#7fba2f', btnSecondColor: '#2678bc',
-  }, container: `
+    //button
+    btnColor: '#7fba2f',
+    btnSecondColor: '#2678bc',
+  },
+  container: `
     width: 1200px;
     height: 100%;
     margin: 0 auto;
@@ -19,5 +25,5 @@ export const defaultTheme = {
     align-items: center;
     justify-content: space-evenly;
     flex-wrap: wrap;
-`
+`,
 };

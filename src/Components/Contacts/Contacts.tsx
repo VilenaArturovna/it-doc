@@ -6,14 +6,16 @@ import styled from 'styled-components';
 
 export const Contacts = () => {
   const bgStyle = {
-    backgroundImage: `url(${bg})`
+    backgroundImage: `url(${bg})`,
   };
-  return (<Root style={bgStyle}>
+  return (
+    <Root style={bgStyle}>
       <Container>
-        <YaMap/>
-        <FormContacts/>
+        <YaMap />
+        <FormContacts />
       </Container>
-    </Root>);
+    </Root>
+  );
 };
 
 const Root = styled.section`
