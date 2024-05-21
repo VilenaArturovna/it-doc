@@ -1,24 +1,27 @@
 import React from 'react';
 import './App.css';
-import { Footer, Header, Nav } from './Components';
 import { defaultTheme } from './themes/defaultTheme';
 import { ThemeProvider } from 'styled-components';
-import { Route } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { MainPage, PlugPage } from './pages';
 import { LoginPage } from './pages/LoginPage/LoginPage';
-import { AdminPage } from './pages/AdminPage';
+import { Orders, Tasks } from './Components';
+import { AdminLayout, SiteLayout } from './Components/layouts';
 
 function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
-      {/*<Header/>
-    <Nav/>*/}
-      <Route exact path={'/'} component={MainPage} />
-      <Route path={'/plug'} component={PlugPage} />
-
-      {/*<Footer/>*/}
-      <Route path={'/login'} component={LoginPage} />
-      <Route path={'/admin/main'} component={AdminPage} />
+      <Routes>
+        <Route path={'/'} element={<SiteLayout />}>
+          <Route index element={<MainPage />} />
+          <Route path={'/plug'} element={<PlugPage />} />
+        </Route>
+        <Route path={'/login'} element={<LoginPage />} />
+        <Route path={'/admin'} element={<AdminLayout />}>
+          <Route path={'/admin/orders'} element={<Orders />} />
+          <Route path={'/admin/tasks'} element={<Tasks />} />
+        </Route>
+      </Routes>
     </ThemeProvider>
   );
 }

@@ -1,11 +1,8 @@
 import { TelegramButton } from './TelegramButton';
-import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const LoginPage = () => {
-  const onSubmit = (user: any) => {
-    return <Redirect to="/" />;
-  };
+  const onSubmit = () => {};
   return (
     <Root>
       <TelegramButton onSubmit={onSubmit} />
