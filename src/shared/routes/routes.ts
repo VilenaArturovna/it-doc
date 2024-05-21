@@ -5,7 +5,7 @@ const vendorRoot = 'vendors';
 const workRoot = 'works';
 const clientRoot = 'clients';
 const orderRoot = 'orders';
-const orderById = `${orderRoot}/:id`;
+const orderById = (id: string) => `${orderRoot}/${id}`;
 const deadlineRoot = 'deadlines';
 const tasksRoot = 'tasks';
 const taskById = (id: string) => `${tasksRoot}/${id}`;
@@ -13,9 +13,7 @@ const taskById = (id: string) => `${tasksRoot}/${id}`;
 export const routes = {
   staff: {
     root: staffRoot,
-    byId(id: string) {
-      return `${staffRoot}/${id}`;
-    },
+    byId: (id: string) => `${staffRoot}/${id}`,
     changePassword: 'change-password',
     getMe: 'get-me',
     auth: {
@@ -24,46 +22,46 @@ export const routes = {
   },
   warehouseItem: {
     root: warehouseItemRoot,
-    byId: `${warehouseItemRoot}/:id`,
+    byId: (id: string) => `${warehouseItemRoot}/${id}`,
   },
   provider: {
     root: providerRoot,
-    byId: `${providerRoot}/:id`,
+    byId: (id: string) => `${providerRoot}/${id}`,
   },
   vendor: {
     root: vendorRoot,
-    byId: `${vendorRoot}/:id`,
+    byId: (id: string) => `${vendorRoot}/${id}`,
   },
   work: {
     root: workRoot,
-    byId: `${workRoot}/:id`,
+    byId: (id: string) => `${workRoot}/${id}`,
   },
   client: {
     root: clientRoot,
-    byId: `${clientRoot}/:id`,
+    byId: (id: string) => `${clientRoot}/${id}`,
   },
   order: {
     root: orderRoot,
-    byId: orderById,
-    putInQueueForDiagnostics: `${orderById}/in-queue-for-diagnostics`,
-    startDiagnostic: `${orderById}/start-diagnostic`,
-    diagnosed: `${orderById}/diagnosed`,
-    approved: `${orderById}/approved`,
-    takeToWork: `${orderById}/take-to-work`,
-    ready: `${orderById}/ready`,
-    complete: `${orderById}/complete`,
+    byId: (id: string) => orderById(id),
+    putInQueueForDiagnostics: (id: string) => `${orderById(id)}/in-queue-for-diagnostics`,
+    startDiagnostic: (id: string) => `${orderById(id)}/start-diagnostic`,
+    diagnosed: (id: string) => `${orderById(id)}/diagnosed`,
+    approved: (id: string) => `${orderById(id)}/approved`,
+    takeToWork: (id: string) => `${orderById(id)}/take-to-work`,
+    ready: (id: string) => `${orderById(id)}/ready`,
+    complete: (id: string) => `${orderById(id)}/complete`,
     infoForClient: `info-about-order`,
   },
   deadline: {
     root: deadlineRoot,
-    byId: `${deadlineRoot}/:id`,
+    byId: (id: string) => `${deadlineRoot}/${id}`,
   },
   task: {
     root: tasksRoot,
     byId: (id: string) => taskById(id),
-    addComment: `${taskById}/comment`,
-    complete: `${taskById}/complete`,
+    addComment: (id: string) => `${taskById(id)}/comment`,
+    complete: (id: string) => `${taskById(id)}/complete`,
     markAsRead: (id: string) => `${taskById(id)}/mark-as-read`,
-    takeToWork: `${taskById}/take-to-work`,
+    takeToWork: (id: string) => `${taskById(id)}/take-to-work`,
   },
 };
