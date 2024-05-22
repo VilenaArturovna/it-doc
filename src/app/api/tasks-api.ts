@@ -15,33 +15,34 @@ import { HTTPMethods } from '../../shared/types';
 export const tasksApi = createApi({
   reducerPath: 'tasksApi',
   baseQuery,
-  tagTypes: ['Task'],
+  tagTypes: ['Task', 'Tasks'],
   endpoints: (builder) => ({
     fetchTasks: builder.query<GetManyTasksDaoModel, GetManyTasksRequestDto>({
       query: (params: GetManyTasksRequestDto) => ({
         url: routes.task.root,
         params,
       }),
-      providesTags: () => ['Task'],
+      providesTags: () => ['Tasks'],
     }),
     getOneTask: builder.query<GetOneTaskDaoModel, string>({
       query: (id: string) => ({
         url: routes.task.byId(id),
       }),
+      providesTags: () => ['Task'],
     }),
     markTaskAsRead: builder.mutation<TaskResponseDto, string>({
       query: (id: string) => ({
         url: routes.task.markAsRead(id),
         method: HTTPMethods.patch,
       }),
-      invalidatesTags: ['Task'],
+      invalidatesTags: ['Tasks'],
     }),
     removeTask: builder.mutation<TaskResponseDto, string>({
       query: (id: string) => ({
         url: routes.task.byId(id),
         method: HTTPMethods.delete,
       }),
-      invalidatesTags: ['Task'],
+      invalidatesTags: ['Tasks'],
     }),
     updateTask: builder.mutation<TaskResponseDto, { id: string; body: UpdateTaskRequestDto }>({
       query: (arg) => ({
@@ -57,7 +58,7 @@ export const tasksApi = createApi({
         method: HTTPMethods.post,
         body,
       }),
-      invalidatesTags: ['Task'],
+      invalidatesTags: ['Tasks'],
     }),
     completeTask: builder.mutation<TaskResponseDto, string>({
       query: (id: string) => ({

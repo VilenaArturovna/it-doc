@@ -1,9 +1,30 @@
 import { useFetchTasksQuery } from '../../../app/api/tasks-api';
-import { Spin, Table, type TableColumnsType } from 'antd';
-import React, { useState } from 'react';
-import { GetManyTasksItem } from '../../../shared/types/api/generated';
+import { Table, type TableColumnsType, Tag } from 'antd';
+import React, { useCallback, useState } from 'react';
+import { GetManyTasksItem, TaskStatus } from '../../../shared/types/api/generated';
 import styled from 'styled-components';
-import { Task } from './task';
+import { useNavigate } from 'react-router-dom';
+import { DateService } from '../../../shared/services';
+import { StyledSpin } from '../../../ui';
+import { EmptyComponent } from '../empty';
+import { RoutePaths } from '../../../shared/route-paths';
+
+enum LegendColors {
+  registered = '#cbe8ab',
+  in_work = '#fff',
+  completed = '#b6ceed',
+  not_read = '#f1c7c7',
+}
+
+const setBackgroundColor = (isRead: boolean, status: TaskStatus) => {
+  return !isRead
+    ? LegendColors.not_read
+    : status === TaskStatus.Registered
+      ? LegendColors.registered
+      : status === TaskStatus.InWork
+        ? LegendColors.in_work
+        : LegendColors.completed;
+};
 
 type TaskTableType = GetManyTasksItem;
 
@@ -17,58 +38,77 @@ export const Tasks = () => {
     { title: 'Дедлайн', dataIndex: 'deadline', key: 'deadline' },
   ];
 
-  const [showTask, setShowTask] = useState<boolean>(false);
-  const [taskId, setTaskId] = useState<string | null>(null);
+  const navigate = useNavigate();
 
-  const onClickTask = (id: string) => {
-    setTaskId(id);
-    setShowTask(true);
-  };
-
-  const onClose = () => {
-    setShowTask(false);
-    setTaskId(null);
-  };
+  const onClick = useCallback(
+    (id: string) => {
+      navigate(`/admin/tasks/${id}`);
+    },
+    [navigate],
+  );
 
   return (
     <Root>
-      {isLoading && <StyledSpin size={'large'} />}
-      {data?.data.length && (
-        <Table
-          columns={columns}
-          dataSource={data ? data.data.map((task: TaskTableType) => ({ ...task, key: task.id })) : []}
-          size="small"
-          onRow={(record) => ({
-            style: {
-              background: !record.isRead ? '#df8555' : 'default',
-            },
-            onClick: () => {
-              onClickTask(record.id);
-            },
-          })}
-          pagination={{
-            total: data?.total || 0,
-            pageSize: data?.limit || 1,
-            current: data?.page || 1,
-            onChange: (page) => {
-              setPage(page);
-            },
-          }}
-        />
+      {isLoading && <StyledSpin />}
+      {data && !data.data.length && (
+        <EmptyComponent createNewTitle={'Добавить задание'} link={RoutePaths.taskNew} />
       )}
-      {showTask && taskId && <Task id={taskId} onClose={onClose} open={showTask} />}
+      {data?.data.length && (
+        <>
+          <Table
+            columns={columns}
+            dataSource={
+              data
+                ? data.data.map((task: TaskTableType) => ({
+                    ...task,
+                    key: task.id,
+                    deadline: task.deadline ? DateService.format(task.deadline) : undefined,
+                  }))
+                : []
+            }
+            size="small"
+            onRow={(record) => ({
+              style: {
+                background: setBackgroundColor(record.isRead, record.status),
+              },
+              onClick: () => {
+                onClick(record.id);
+              },
+            })}
+            pagination={{
+              total: data?.total || 0,
+              pageSize: data?.limit || 1,
+              current: data?.page || 1,
+              onChange: (page) => {
+                setPage(page);
+              },
+            }}
+          />
+          <TagsGroup>
+            <StyledTag color={LegendColors.registered}>Новое</StyledTag>
+            <StyledTag color={LegendColors.in_work}>В работе</StyledTag>
+            <StyledTag color={LegendColors.completed}>Завершено</StyledTag>
+            <StyledTag color={LegendColors.not_read}>Не прочитано</StyledTag>
+          </TagsGroup>
+        </>
+      )}
     </Root>
   );
 };
 
-const Root = styled.div`
-  display: block;
-  max-width: 100%;
-  padding: 20px;
+const Root = styled.div``;
+
+const TagsGroup = styled.div`
+  margin-top: 20px;
 `;
 
-const StyledSpin = styled(Spin)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+const StyledTag = styled(Tag).attrs((props) => ({
+  className: props.className,
+}))`
+  margin-right: 10px;
+
+  &.ant-tag-has-color {
+    color: #000;
+    border: 1px solid gray;
+  }
 `;

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Avatar, Menu, MenuProps } from 'antd';
 import React, { useEffect, useState } from 'react';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -60,16 +60,20 @@ const items: MenuItem[] = [
 ];
 
 export const AdminLayout = () => {
-  const [selectedItem, setSelectedItem] = useState<MenuKeys>(MenuKeys.orders);
+  const location = useLocation();
+  const locate = location.pathname.slice(7);
 
+  const [selectedItem, setSelectedItem] = useState<MenuKeys | null>(
+    items.map((i) => i!.key).includes(locate) ? (locate as MenuKeys) : null,
+  );
+  const navigate = useNavigate();
   const onClick = (key: MenuKeys) => {
     setSelectedItem(key);
   };
 
-  const navigate = useNavigate();
   useEffect(() => {
-    navigate(`/admin/${selectedItem}`);
-  }, [navigate, selectedItem]);
+    selectedItem && navigate(`/admin/${selectedItem}`);
+  }, [selectedItem]);
 
   return (
     <Root>
@@ -82,15 +86,16 @@ export const AdminLayout = () => {
           onClick={(info) => {
             onClick(info.key as MenuKeys);
           }}
-          defaultSelectedKeys={[MenuKeys.orders]}
-          selectedKeys={[selectedItem]}
+          selectedKeys={selectedItem ? [selectedItem] : undefined}
         />
       </LeftBlock>
       <RightBlock>
         <Header>
           <Avatar size={64} src={avatarSrc} />
         </Header>
-        <Outlet />
+        <OutletContainer>
+          <Outlet />
+        </OutletContainer>
       </RightBlock>
     </Root>
   );
@@ -130,4 +135,10 @@ const Header = styled.div`
   align-items: center;
   justify-content: end;
   padding-right: 20px;
+`;
+
+const OutletContainer = styled.div`
+  display: block;
+  max-width: 100%;
+  padding: 20px;
 `;

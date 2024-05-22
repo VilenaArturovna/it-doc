@@ -53,3 +53,11 @@ export const clientsApi = createApi({
     }),
   }),
 });
+
+export const {
+  useCreateClientMutation,
+  useFetchClientsQuery,
+  useGetOneClientQuery,
+  useRemoveClientMutation,
+  useUpdateClientMutation,
+} = clientsApi;
