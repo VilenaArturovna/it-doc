@@ -1,3 +1,3 @@
-export { tasksApi } from './tasks-api';
-export { ordersApi } from './orders-api';
-export { clientsApi } from './clients-api';
+export * from './tasks-api';
+export * from './orders-api';
+export * from './clients-api';

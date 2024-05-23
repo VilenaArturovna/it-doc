@@ -1,5 +1,4 @@
-import { useFetchTasksQuery } from '../../../app/api/tasks-api';
-import { Table, type TableColumnsType, Tag } from 'antd';
+import { Button, Table, type TableColumnsType, Tag } from 'antd';
 import React, { useCallback, useState } from 'react';
 import { GetManyTasksItem, TaskStatus } from '../../../shared/types/api/generated';
 import styled from 'styled-components';
@@ -8,6 +7,7 @@ import { DateService } from '../../../shared/services';
 import { StyledSpin } from '../../../ui';
 import { EmptyComponent } from '../empty';
 import { RoutePaths } from '../../../shared/route-paths';
+import { useFetchTasksQuery } from '../../../app/api';
 
 enum LegendColors {
   registered = '#cbe8ab',
@@ -55,6 +55,9 @@ export const Tasks = () => {
       )}
       {data?.data.length && (
         <>
+          <StyledButton type={'primary'} onClick={() => navigate(RoutePaths.taskNew)}>
+            Создать новое задание
+          </StyledButton>
           <Table
             columns={columns}
             dataSource={
@@ -111,4 +114,8 @@ const StyledTag = styled(Tag).attrs((props) => ({
     color: #000;
     border: 1px solid gray;
   }
+`;
+
+const StyledButton = styled(Button)`
+  margin-bottom: 20px;
 `;
