@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 type PropsType = {
   link: string;
-  createNewTitle: string;
+  createNewTitle?: string;
 };
 
 export const EmptyComponent = ({ link, createNewTitle }: PropsType) => {
@@ -16,9 +16,11 @@ export const EmptyComponent = ({ link, createNewTitle }: PropsType) => {
       imageStyle={{ height: 200 }}
       description={<span>Здесь пока пусто</span>}
     >
-      <Button type="primary" onClick={onClick}>
-        {createNewTitle}
-      </Button>
+      {createNewTitle && (
+        <Button type="primary" onClick={onClick}>
+          {createNewTitle}
+        </Button>
+      )}
     </Empty>
   );
 };

@@ -14,6 +14,7 @@ import { TaskStatusMapper } from '../../../shared/mappers';
 import { DateService } from '../../../shared/services';
 import { TaskStatus } from '../../../shared/types/api/generated';
 import { RoutePaths } from '../../../shared/route-paths';
+import { useGetMe } from '../../../hooks';
 
 export const Task = () => {
   const { id } = useParams<{ id: string }>();
@@ -112,12 +113,17 @@ export const Task = () => {
     { key: 'comment', dataIndex: 'comment', title: 'Комментарий' },
   ];
 
+  const { user } = useGetMe();
+  const isAuthor = data?.participants.find((p) => p.staff.id === user?.id)?.isAuthor;
+  const isResponsible = Boolean(data?.participants.find((p) => p.staff.id === user?.id)?.isResponsible);
+  const hasResponsible = Boolean(data?.participants.filter((p) => p.isResponsible).length);
+
   useEffect(() => {
-    //todo проверять по стаффу прочитано или нет
-    if (data) {
-      markAsRead(data.id);
+    if (data && user) {
+      const isRead = data.participants.find((p) => p.staff.id === user.id)?.isRead;
+      !isRead && markAsRead(data.id);
     }
-  }, [data, id, markAsRead]);
+  }, [data, id, markAsRead, user]);
 
   return (
     <Root>
@@ -146,17 +152,18 @@ export const Task = () => {
           )}
           <ButtonGroup>
             <div>
-              {data.status === TaskStatus.Registered && (
-                <StyledButton onClick={takeToWorkHandle} type="primary">
-                  Взять в работу
-                </StyledButton>
-              )}
-              {data.status === TaskStatus.InWork && (
+              {((hasResponsible && isResponsible) || !hasResponsible) &&
+                data.status === TaskStatus.Registered && (
+                  <StyledButton onClick={takeToWorkHandle} type="primary">
+                    Взять в работу
+                  </StyledButton>
+                )}
+              {isResponsible && data.status === TaskStatus.InWork && (
                 <StyledButton onClick={completeHandle} type="primary">
                   Завершить
                 </StyledButton>
               )}
-              {data.status !== TaskStatus.Completed && (
+              {isAuthor && data.status !== TaskStatus.Completed && (
                 <StyledButton onClick={editHandle} type="primary">
                   Изменить
                 </StyledButton>
@@ -166,15 +173,17 @@ export const Task = () => {
                   Оставить комментарий
                 </StyledButton>
               )}
-              <Popconfirm
-                title="Удалени задания"
-                description="Вы уверены, что хотите удалить задание?"
-                onConfirm={removeHandle}
-                okText="Да"
-                cancelText="Нет"
-              >
-                <StyledButton danger>Удалить</StyledButton>
-              </Popconfirm>
+              {isAuthor && data.status !== TaskStatus.Completed && (
+                <Popconfirm
+                  title="Удаление задания"
+                  description="Вы уверены, что хотите удалить задание?"
+                  onConfirm={removeHandle}
+                  okText="Да"
+                  cancelText="Нет"
+                >
+                  <StyledButton danger>Удалить</StyledButton>
+                </Popconfirm>
+              )}
             </div>
             <Button onClick={onClickBack} type="primary">
               Назад

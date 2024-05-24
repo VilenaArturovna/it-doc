@@ -1,6 +1,6 @@
 import { Button, Table, type TableColumnsType, Tag } from 'antd';
 import React, { useCallback, useState } from 'react';
-import { GetManyTasksItem, TaskStatus } from '../../../shared/types/api/generated';
+import { GetManyTasksItem, Role, TaskStatus } from '../../../shared/types/api/generated';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { DateService } from '../../../shared/services';
@@ -8,6 +8,7 @@ import { StyledSpin } from '../../../ui';
 import { EmptyComponent } from '../empty';
 import { RoutePaths } from '../../../shared/route-paths';
 import { useFetchTasksQuery } from '../../../app/api';
+import { useGetMe } from '../../../hooks';
 
 enum LegendColors {
   registered = '#cbe8ab',
@@ -47,11 +48,17 @@ export const Tasks = () => {
     [navigate],
   );
 
+  const { user } = useGetMe();
+  const canCreateTask = user?.role === Role.Admin || user?.role === Role.Manager;
+
   return (
     <Root>
       {isLoading && <StyledSpin />}
       {data && !data.data.length && (
-        <EmptyComponent createNewTitle={'Добавить задание'} link={RoutePaths.taskNew} />
+        <EmptyComponent
+          createNewTitle={canCreateTask ? 'Добавить задание' : undefined}
+          link={RoutePaths.taskNew}
+        />
       )}
       {data?.data.length && (
         <>

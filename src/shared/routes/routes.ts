@@ -14,7 +14,6 @@ export const routes = {
   staff: {
     root: staffRoot,
     byId: (id: string) => `${staffRoot}/${id}`,
-    changePassword: 'change-password',
     getMe: 'get-me',
     auth: {
       login: 'login',

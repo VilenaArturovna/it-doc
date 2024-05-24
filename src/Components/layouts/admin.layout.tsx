@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import { Avatar, Menu, MenuProps } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { useGetMe } from '../../hooks';
+import { Role } from '../../shared/types/api/generated';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -45,6 +47,9 @@ const items: MenuItem[] = [
     label: 'Склад',
     key: MenuKeys.warehouse,
   },
+];
+
+const adminItems: MenuItem[] = [
   {
     label: 'Персонал',
     key: MenuKeys.staff,
@@ -71,6 +76,8 @@ export const AdminLayout = () => {
     setSelectedItem(key);
   };
 
+  const { user } = useGetMe();
+
   useEffect(() => {
     selectedItem && navigate(`/admin/${selectedItem}`);
   }, [selectedItem]);
@@ -82,7 +89,7 @@ export const AdminLayout = () => {
         <Menu
           mode="inline"
           theme="dark"
-          items={items}
+          items={user?.role !== Role.Admin ? items : items.concat(adminItems)}
           onClick={(info) => {
             onClick(info.key as MenuKeys);
           }}
@@ -91,7 +98,7 @@ export const AdminLayout = () => {
       </LeftBlock>
       <RightBlock>
         <Header>
-          <Avatar size={64} src={avatarSrc} />
+          <Avatar size={64} src={user?.avatar || avatarSrc} />
         </Header>
         <OutletContainer>
           <Outlet />
