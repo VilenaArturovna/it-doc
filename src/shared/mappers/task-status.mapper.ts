@@ -1,6 +1,6 @@
 import { TaskStatus } from '../types/api/generated';
 
-export const TaskStatusMapper = (status: TaskStatus) => {
+export const taskStatusMapper = (status: TaskStatus) => {
   switch (status) {
     case 'COMPLETED':
       return 'Выполнено';

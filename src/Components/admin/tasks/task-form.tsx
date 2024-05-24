@@ -1,8 +1,7 @@
 import dayjs from 'dayjs';
-import { Button, DatePicker, Form, FormInstance, Input, InputNumber, Select } from 'antd';
-import { SubmitButton } from '../../../ui';
+import { DatePicker, Form, FormInstance, Input, InputNumber, Select } from 'antd';
+import { BackButton, SubmitButton } from '../../../ui';
 import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
 import { useFetchStaffQuery } from '../../../app/api';
 import Title from 'antd/lib/typography/Title';
 import React, { useEffect } from 'react';
@@ -28,7 +27,6 @@ export const TaskForm = ({
   initialValues,
   formTitle,
 }: Props) => {
-  const navigate = useNavigate();
   const { data, isLoading: loadingStaff } = useFetchStaffQuery({ page: 1, limit: 100 });
 
   useEffect(() => {}, [initialValues]);
@@ -76,9 +74,7 @@ export const TaskForm = ({
               {buttonTitle}
             </SubmitButton>
           </Form.Item>
-          <Button type="primary" onClick={() => navigate(-1)}>
-            Назад
-          </Button>
+          <BackButton />
         </ButtonGroup>
       </StyledForm>
     </Root>

@@ -17,7 +17,7 @@ import { HTTPMethods } from '../../shared/types';
 export const staffApi = createApi({
   baseQuery,
   reducerPath: 'staffApi',
-  tagTypes: ['Staff', 'OneStaff'],
+  tagTypes: ['Staff', 'OneStaff', 'GetMe'],
   endpoints: (builder) => ({
     fetchStaff: builder.query<GetManyStaffDaoModel, GetManyStaffRequestDto>({
       query: (params: GetManyStaffRequestDto) => ({
@@ -40,18 +40,18 @@ export const staffApi = createApi({
       }),
       invalidatesTags: ['Staff'],
     }),
-    updateStaff: builder.mutation<StaffResponseDto, { body: UpdateStaffRequestDto; id: string }>({
-      query: (arg) => ({
-        url: routes.staff.byId(arg.id),
-        body: arg.body,
+    updateStaff: builder.mutation<StaffResponseDto, UpdateStaffRequestDto>({
+      query: (body) => ({
+        url: routes.staff.root,
+        body,
         method: HTTPMethods.patch,
       }),
-      invalidatesTags: ['Staff', 'OneStaff'],
+      invalidatesTags: ['Staff', 'OneStaff', 'GetMe'],
     }),
     removeStaff: builder.mutation<StaffResponseDto, string>({
       query: (id: string) => ({
         url: routes.staff.byId(id),
-        method: HTTPMethods.patch,
+        method: HTTPMethods.delete,
       }),
       invalidatesTags: ['Staff'],
     }),
@@ -59,6 +59,7 @@ export const staffApi = createApi({
       query: () => ({
         url: routes.staff.getMe,
       }),
+      providesTags: () => ['GetMe'],
     }),
     login: builder.mutation<LoginViaTgResponseDto, LoginViaTgRequestDto>({
       query: (params: LoginViaTgRequestDto) => ({

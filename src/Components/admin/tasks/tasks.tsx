@@ -27,13 +27,11 @@ const setBackgroundColor = (isRead: boolean, status: TaskStatus) => {
         : LegendColors.completed;
 };
 
-type TaskTableType = GetManyTasksItem;
-
 export const Tasks = () => {
   const [page, setPage] = useState(1);
   const { data, isLoading } = useFetchTasksQuery({ limit: 10, page });
 
-  const columns: TableColumnsType<TaskTableType> = [
+  const columns: TableColumnsType<GetManyTasksItem> = [
     { title: 'Тема', dataIndex: 'theme', key: 'theme' },
     { title: 'Номер', dataIndex: 'number', key: 'number' },
     { title: 'Дедлайн', dataIndex: 'deadline', key: 'deadline' },
@@ -52,24 +50,24 @@ export const Tasks = () => {
   const canCreateTask = user?.role === Role.Admin || user?.role === Role.Manager;
 
   return (
-    <Root>
+    <div>
       {isLoading && <StyledSpin />}
       {data && !data.data.length && (
         <EmptyComponent
           createNewTitle={canCreateTask ? 'Добавить задание' : undefined}
-          link={RoutePaths.taskNew}
+          link={RoutePaths.newTask}
         />
       )}
       {data?.data.length && (
         <>
-          <StyledButton type={'primary'} onClick={() => navigate(RoutePaths.taskNew)}>
+          <StyledButton type={'primary'} onClick={() => navigate(RoutePaths.newTask)}>
             Создать новое задание
           </StyledButton>
           <Table
             columns={columns}
             dataSource={
               data
-                ? data.data.map((task: TaskTableType) => ({
+                ? data.data.map((task) => ({
                     ...task,
                     key: task.id,
                     deadline: task.deadline ? DateService.format(task.deadline) : undefined,
@@ -102,11 +100,9 @@ export const Tasks = () => {
           </TagsGroup>
         </>
       )}
-    </Root>
+    </div>
   );
 };
-
-const Root = styled.div``;
 
 const TagsGroup = styled.div`
   margin-top: 20px;

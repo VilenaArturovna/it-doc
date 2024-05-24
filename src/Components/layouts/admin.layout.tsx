@@ -1,14 +1,12 @@
 import styled from 'styled-components';
-import { Avatar, Menu, MenuProps } from 'antd';
+import { Menu, MenuProps } from 'antd';
 import React, { useEffect, useState } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { useGetMe } from '../../hooks';
 import { Role } from '../../shared/types/api/generated';
+import { DropdownAvatar } from '../../ui';
 
 type MenuItem = Required<MenuProps>['items'][number];
-
-const avatarSrc =
-  'https://sun9-7.userapi.com/impg/5z_kdsKBvpRrhoCzbdWNqNoXhXmVu0sRfQxLXw/_4WI7zEYTlg.jpg?size=320x320&quality=96&sign=d6f15ce78af703fef5b8f8a72afb66c1&c_uniq_tag=s93Oy3E0V3nINK4KjOCJVotJtdn8i5AQyCoNz3pte2E&type=album';
 
 enum MenuKeys {
   orders = 'orders',
@@ -69,8 +67,14 @@ export const AdminLayout = () => {
   const locate = location.pathname.slice(7);
 
   const [selectedItem, setSelectedItem] = useState<MenuKeys | null>(
-    items.map((i) => i!.key).includes(locate) ? (locate as MenuKeys) : null,
+    items
+      .concat(adminItems)
+      .map((i) => i!.key)
+      .includes(locate)
+      ? (locate as MenuKeys)
+      : null,
   );
+
   const navigate = useNavigate();
   const onClick = (key: MenuKeys) => {
     setSelectedItem(key);
@@ -98,7 +102,7 @@ export const AdminLayout = () => {
       </LeftBlock>
       <RightBlock>
         <Header>
-          <Avatar size={64} src={user?.avatar || avatarSrc} />
+          <DropdownAvatar src={user?.avatar ?? undefined} />
         </Header>
         <OutletContainer>
           <Outlet />

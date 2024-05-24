@@ -6,7 +6,8 @@ export class DateService {
     return new Date(value).toISOString();
   }
 
-  static format(value: string): string {
-    return dayjs(value, { locale: 'ru' }).format('D MMM YYYY HH:mm');
+  static format(value: string, onlyDate?: boolean): string {
+    const template = onlyDate ? 'D MMMM YYYY' : 'D MMMM YYYY HH:mm';
+    return dayjs(value, { locale: 'ru' }).format(template);
   }
 }

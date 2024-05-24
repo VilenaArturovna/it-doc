@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Descriptions, DescriptionsProps, Input, Modal, Popconfirm, Spin, Table } from 'antd';
+import { Button, Descriptions, DescriptionsProps, Input, Modal, notification, Popconfirm, Table } from 'antd';
 import {
   useAddCommentToTaskMutation,
   useCompleteTaskMutation,
@@ -10,17 +10,20 @@ import {
 } from '../../../app/api';
 import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import { TaskStatusMapper } from '../../../shared/mappers';
+import { taskStatusMapper } from '../../../shared/mappers';
 import { DateService } from '../../../shared/services';
 import { TaskStatus } from '../../../shared/types/api/generated';
 import { RoutePaths } from '../../../shared/route-paths';
 import { useGetMe } from '../../../hooks';
+import { notificationHelper } from '../../../shared/helpers';
+import { BackButton, StyledSpin } from '../../../ui';
 
 export const Task = () => {
   const { id } = useParams<{ id: string }>();
   if (!id) throw new Error('id is required');
 
   const navigate = useNavigate();
+  const [api, contextHolder] = notification.useNotification();
 
   const { data, isLoading, error } = useGetOneTaskQuery(id);
   const [markAsRead] = useMarkTaskAsReadMutation();
@@ -46,11 +49,10 @@ export const Task = () => {
   const title = `Задание ${data ? data.number : ''}`;
   const author = data?.participants.find((p) => p.isAuthor);
 
-  const onClickBack = () => navigate(-1);
   const takeToWorkHandle = () => {
     takeToWork(id);
   };
-  const editHandle = () => navigate(RoutePaths.getTaskEditRoute(id));
+  const editHandle = () => navigate(RoutePaths.getEditTaskRoute(id));
   const completeHandle = () => {
     complete(id);
   };
@@ -97,7 +99,7 @@ export const Task = () => {
         {
           key: '6',
           label: 'Статус',
-          children: TaskStatusMapper(data.status),
+          children: taskStatusMapper(data.status),
         },
         {
           key: '8',
@@ -124,10 +126,14 @@ export const Task = () => {
       !isRead && markAsRead(data.id);
     }
   }, [data, id, markAsRead, user]);
+  useEffect(() => {
+    notificationHelper({ api, error });
+  }, [api, error]);
 
   return (
     <Root>
-      {isLoading && <Spin />}
+      {contextHolder}
+      {isLoading && <StyledSpin />}
       {data && (
         <>
           <StyledDescription
@@ -185,15 +191,9 @@ export const Task = () => {
                 </Popconfirm>
               )}
             </div>
-            <Button onClick={onClickBack} type="primary">
-              Назад
-            </Button>
+            <BackButton />
           </ButtonGroup>
         </>
-      )}
-      {error && (
-        // @ts-ignore
-        <p>{error.data.message}</p>
       )}
       <Modal title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
         <Input placeholder={'Комментарий'} onChange={(e) => setComment(e.target.value)} />

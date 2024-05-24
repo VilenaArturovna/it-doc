@@ -4,12 +4,12 @@ import { FormInstance } from 'antd';
 type NotificationType = 'success' | 'info' | 'warning' | 'error';
 
 type Props = {
-  messageSuccess: string;
-  descriptionSuccess?: string;
   api: NotificationInstance;
-  isSuccess: boolean;
+  messageSuccess?: string;
+  descriptionSuccess?: string;
+  isSuccess?: boolean;
   error?: any;
-  form: FormInstance;
+  form?: FormInstance;
 };
 
 export const notificationHelper = (props: Props) => {
@@ -20,8 +20,8 @@ export const notificationHelper = (props: Props) => {
     });
   };
 
-  if (props.isSuccess) {
-    props.form.resetFields();
+  if (props.isSuccess && props.messageSuccess) {
+    props.form && props.form.resetFields();
     openNotification('success', props.messageSuccess);
   }
   if (props.error) {
