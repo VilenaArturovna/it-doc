@@ -7,12 +7,13 @@ import {
   useMarkTaskAsReadMutation,
   useRemoveTaskMutation,
   useTakeToWorkTaskMutation,
-} from '../../../app/api/tasks-api';
+} from '../../../app/api';
 import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { TaskStatusMapper } from '../../../shared/mappers';
 import { DateService } from '../../../shared/services';
 import { TaskStatus } from '../../../shared/types/api/generated';
+import { RoutePaths } from '../../../shared/route-paths';
 
 export const Task = () => {
   const { id } = useParams<{ id: string }>();
@@ -48,7 +49,7 @@ export const Task = () => {
   const takeToWorkHandle = () => {
     takeToWork(id);
   };
-  const editHandle = () => {};
+  const editHandle = () => navigate(RoutePaths.getTaskEditRoute(id));
   const completeHandle = () => {
     complete(id);
   };

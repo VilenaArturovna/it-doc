@@ -6,8 +6,11 @@ export const RoutePaths = {
   orders: '/admin/orders',
   tasks: '/admin/tasks',
   task: '/admin/tasks/:id',
+  taskEdit: '/admin/tasks/:id/edit',
   taskNew: '/admin/tasks/new',
   clients: '/admin/clients',
   client: '/admin/clients/:id',
   clientNew: '/admin/clients/new',
+  getTaskRoute: (id: string) => `/admin/tasks/${id}`,
+  getTaskEditRoute: (id: string) => `/admin/tasks/${id}/edit`,
 };

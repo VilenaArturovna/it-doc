@@ -42,7 +42,7 @@ export const Tasks = () => {
 
   const onClick = useCallback(
     (id: string) => {
-      navigate(`/admin/tasks/${id}`);
+      navigate(RoutePaths.getTaskRoute(id));
     },
     [navigate],
   );

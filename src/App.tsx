@@ -5,7 +5,7 @@ import { ThemeProvider } from 'styled-components';
 import { Route, Routes } from 'react-router-dom';
 import { MainPage, PlugPage } from './pages';
 import { LoginPage } from './pages/LoginPage/LoginPage';
-import { Orders, Tasks, Task, Clients, NewClient, NewTask } from './Components';
+import { Orders, Tasks, Task, Clients, NewClient, NewTask, EditTask } from './Components';
 import { AdminLayout, SiteLayout } from './Components/layouts';
 import { RoutePaths } from './shared/route-paths';
 
@@ -23,6 +23,7 @@ function App() {
           <Route path={RoutePaths.tasks} element={<Tasks />} />
           <Route path={RoutePaths.task} element={<Task />} />
           <Route path={RoutePaths.taskNew} element={<NewTask />} />
+          <Route path={RoutePaths.taskEdit} element={<EditTask />} />
           <Route path={RoutePaths.clients} element={<Clients />} />
           <Route path={RoutePaths.clientNew} element={<NewClient />} />
         </Route>
