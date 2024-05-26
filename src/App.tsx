@@ -6,19 +6,23 @@ import { Route, Routes } from 'react-router-dom';
 import { MainPage, PlugPage } from './pages';
 import { LoginPage } from './pages/LoginPage/LoginPage';
 import {
-  Orders,
-  Tasks,
-  Task,
   Clients,
-  NewClient,
-  NewTask,
-  EditTask,
-  Staff,
-  OneStaff,
-  EditStaff,
-  NewStaff,
-  Profile,
   Deadlines,
+  EditProvider,
+  EditStaff,
+  EditTask,
+  NewClient,
+  NewProvider,
+  NewStaff,
+  NewTask,
+  OneProvider,
+  OneStaff,
+  Orders,
+  Profile,
+  Providers,
+  Staff,
+  Task,
+  Tasks,
 } from './Components';
 import { AdminLayout, SiteLayout } from './Components/layouts';
 import { RoutePaths } from './shared/route-paths';
@@ -46,6 +50,10 @@ function App() {
           <Route path={RoutePaths.newStaff} element={<NewStaff />} />
           <Route path={RoutePaths.profile} element={<Profile />} />
           <Route path={RoutePaths.deadlines} element={<Deadlines />} />
+          <Route path={RoutePaths.providers} element={<Providers />} />
+          <Route path={RoutePaths.provider} element={<OneProvider />} />
+          <Route path={RoutePaths.newProvider} element={<NewProvider />} />
+          <Route path={RoutePaths.editProvider} element={<EditProvider />} />
         </Route>
       </Routes>
     </ThemeProvider>

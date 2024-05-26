@@ -25,7 +25,6 @@ export const EditTask = () => {
       id,
       body: { ...values, deadline: values.deadline?.toISOString(), price: values.price?.toString() },
     });
-    navigate(-1);
   };
 
   useEffect(() => {
@@ -36,6 +35,7 @@ export const EditTask = () => {
       error,
       messageSuccess: 'Задание успешно изменено',
     });
+    isSuccess && navigate(-1);
   }, [isSuccess, error]);
   useEffect(() => {}, [task]);
 

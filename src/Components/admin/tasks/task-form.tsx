@@ -15,7 +15,6 @@ type Props = {
   contextHolder: React.ReactElement<any, string | React.JSXElementConstructor<any>>;
   form: FormInstance;
   initialValues?: TaskFormValues;
-  taskId?: string;
 };
 
 export const TaskForm = ({

@@ -131,7 +131,7 @@ export const Task = () => {
   }, [api, error]);
 
   return (
-    <Root>
+    <div>
       {contextHolder}
       {isLoading && <StyledSpin />}
       {data && (
@@ -198,11 +198,9 @@ export const Task = () => {
       <Modal title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
         <Input placeholder={'Комментарий'} onChange={(e) => setComment(e.target.value)} />
       </Modal>
-    </Root>
+    </div>
   );
 };
-
-const Root = styled.div``;
 
 const StyledDescription = styled(Descriptions)`
   margin-bottom: 40px;

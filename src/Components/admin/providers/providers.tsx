@@ -1,29 +1,25 @@
-import { useNavigate } from 'react-router-dom';
-import { useFetchStaffQuery } from '../../../app/api';
-import { StyledSpin } from '../../../ui';
 import React, { useCallback, useEffect, useState } from 'react';
-import { Button, notification, Table } from 'antd';
+import { useFetchProvidersQuery } from '../../../app/api';
+import { StyledSpin } from '../../../ui';
+import { EmptyComponent } from '../empty';
 import { RoutePaths } from '../../../shared/route-paths';
-import styled from 'styled-components';
-import { roleMapper } from '../../../shared/mappers';
+import { useNavigate } from 'react-router-dom';
+import { Button, notification, Table } from 'antd';
 import { notificationHelper } from '../../../shared/helpers';
+import styled from 'styled-components';
 
-export const Staff = () => {
+export const Providers = () => {
   const navigate = useNavigate();
   const [api, contextHolder] = notification.useNotification();
 
   const [page, setPage] = useState(1);
-  const { data, isLoading, error } = useFetchStaffQuery({ page, limit: 10 });
+  const { data, isLoading, error } = useFetchProvidersQuery({ limit: 10, page });
 
-  const columns = [
-    { title: 'Имя', dataIndex: 'name', key: 'name' },
-    { title: 'Роль', dataIndex: 'role', key: 'role' },
-    { title: 'Удален', dataIndex: 'isRemoved', key: 'isRemoved' },
-  ];
+  const columns = [{ title: 'Название', dataIndex: 'title', key: 'title' }];
 
   const onClick = useCallback(
     (id: string) => {
-      navigate(RoutePaths.getOneStaffRoute(id));
+      navigate(RoutePaths.getProviderRoute(id));
     },
     [navigate],
   );
@@ -35,19 +31,19 @@ export const Staff = () => {
     <div>
       {contextHolder}
       {isLoading && <StyledSpin />}
+      {data && !data.data.length && (
+        <EmptyComponent createNewTitle={'Добавить поставщика'} link={RoutePaths.newProvider} />
+      )}
       {data?.data.length && (
         <>
-          <StyledButton type={'primary'} onClick={() => navigate(RoutePaths.newStaff)}>
-            Добавить сотрудника
+          <StyledButton type={'primary'} onClick={() => navigate(RoutePaths.newProvider)}>
+            Добавить поставщика
           </StyledButton>
           <Table
             columns={columns}
-            dataSource={data.data.map((staff) => ({
-              id: staff.id,
-              key: staff.id,
-              name: `${staff.lastname} ${staff.firstname} ${staff.middleName} `,
-              role: roleMapper(staff.role),
-              isRemoved: staff.isRemoved ? 'Да' : undefined,
+            dataSource={data.data.map((item) => ({
+              ...item,
+              key: item.id,
             }))}
             size="small"
             onRow={(record) => ({
