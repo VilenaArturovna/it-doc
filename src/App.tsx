@@ -18,6 +18,7 @@ import {
   EditStaff,
   NewStaff,
   Profile,
+  Deadlines,
 } from './Components';
 import { AdminLayout, SiteLayout } from './Components/layouts';
 import { RoutePaths } from './shared/route-paths';
@@ -44,6 +45,7 @@ function App() {
           <Route path={RoutePaths.editStaff} element={<EditStaff />} />
           <Route path={RoutePaths.newStaff} element={<NewStaff />} />
           <Route path={RoutePaths.profile} element={<Profile />} />
+          <Route path={RoutePaths.deadlines} element={<Deadlines />} />
         </Route>
       </Routes>
     </ThemeProvider>

@@ -20,4 +20,5 @@ export const RoutePaths = {
   editStaff: '/admin/staff/:id/edit',
   getOneStaffRoute: (id: string) => `/admin/staff/${id}`,
   getEditStaffRoute: (id: string) => `/admin/staff/${id}/edit`,
+  deadlines: '/admin/deadlines',
 };
