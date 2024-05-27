@@ -35,15 +35,19 @@ export const OneStaff = () => {
         <>
           <StaffDescriptions user={staff} />
           <ButtonGroup>
-            <Popconfirm
-              title="Удаление сотрудника"
-              description="Вы уверены, что хотите удалить сотрудника?"
-              onConfirm={removeHandle}
-              okText="Да"
-              cancelText="Нет"
-            >
-              <StyledButton danger>Удалить</StyledButton>
-            </Popconfirm>
+            {!staff.isRemoved ? (
+              <Popconfirm
+                title="Удаление сотрудника"
+                description="Вы уверены, что хотите удалить сотрудника?"
+                onConfirm={removeHandle}
+                okText="Да"
+                cancelText="Нет"
+              >
+                <StyledButton danger>Удалить</StyledButton>
+              </Popconfirm>
+            ) : (
+              ''
+            )}
             <BackButton />
           </ButtonGroup>
         </>

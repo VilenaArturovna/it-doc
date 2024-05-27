@@ -14,19 +14,20 @@ import { HTTPMethods } from '../../shared/types';
 export const clientsApi = createApi({
   baseQuery,
   reducerPath: 'clientsApi',
-  tagTypes: ['Client'],
+  tagTypes: ['Clients', 'Client'],
   endpoints: (builder) => ({
     fetchClients: builder.query<GetManyClientsDaoModel, GetManyClientsRequestDto>({
       query: (params: GetManyClientsRequestDto) => ({
         url: routes.client.root,
         params,
       }),
-      providesTags: () => ['Client'],
+      providesTags: () => ['Clients'],
     }),
     getOneClient: builder.query<GetOneClientDaoModel, string>({
       query: (id: string) => ({
         url: routes.client.byId(id),
       }),
+      providesTags: () => ['Client'],
     }),
     createClient: builder.mutation<ClientResponseDto, CreateClientRequestDto>({
       query: (body: CreateClientRequestDto) => ({
@@ -34,14 +35,14 @@ export const clientsApi = createApi({
         method: HTTPMethods.post,
         body,
       }),
-      invalidatesTags: ['Client'],
+      invalidatesTags: ['Clients'],
     }),
     removeClient: builder.mutation<ClientResponseDto, string>({
       query: (id: string) => ({
         url: routes.client.byId(id),
         method: HTTPMethods.delete,
       }),
-      invalidatesTags: ['Client'],
+      invalidatesTags: ['Clients'],
     }),
     updateClient: builder.mutation<ClientResponseDto, { body: UpdateClientRequestDto; id: string }>({
       query: (arg) => ({
@@ -49,7 +50,7 @@ export const clientsApi = createApi({
         method: HTTPMethods.patch,
         body: arg.body,
       }),
-      invalidatesTags: ['Client'],
+      invalidatesTags: ['Clients', 'Client'],
     }),
   }),
 });

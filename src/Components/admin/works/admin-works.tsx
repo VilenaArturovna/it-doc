@@ -9,11 +9,12 @@ import { notificationHelper } from '../../../shared/helpers';
 import styled from 'styled-components';
 import { TimeParseService } from '../../../shared/services';
 import { useForm } from 'antd/es/form/Form';
+import { GetManyWorksRequestDto } from '../../../shared/types/api/generated';
 
 export const AdminWorks = () => {
   const navigate = useNavigate();
   const [api, contextHolder] = notification.useNotification();
-  const [form] = useForm();
+  const [form] = useForm<GetManyWorksRequestDto>();
 
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState<string | undefined>(undefined);
@@ -35,7 +36,7 @@ export const AdminWorks = () => {
     },
     [navigate],
   );
-  const onClickSubmit = () => {
+  const onClickSearch = () => {
     const value = form.getFieldsValue().search;
     setSearch(Boolean(value) ? value : undefined);
     setPage(1);
@@ -53,7 +54,7 @@ export const AdminWorks = () => {
       {data && !search && !data.data.length && (
         <EmptyComponent createNewTitle={'Добавить вид работ'} link={RoutePaths.newWork} />
       )}
-      {(data?.data.length || search) && (
+      {data?.data.length || search ? (
         <>
           <StyledButton type={'primary'} onClick={() => navigate(RoutePaths.newWork)}>
             Добавить вид работ
@@ -63,7 +64,7 @@ export const AdminWorks = () => {
               <Input placeholder={'Введите вид работ'} style={{ width: '300px' }} />
             </Form.Item>
             <Form.Item>
-              <SubmitButton form={form} onClick={onClickSubmit} loading={isLoading}>
+              <SubmitButton form={form} onClick={onClickSearch} loading={isLoading}>
                 Поиск
               </SubmitButton>
             </Form.Item>
@@ -92,6 +93,8 @@ export const AdminWorks = () => {
             }}
           />
         </>
+      ) : (
+        ''
       )}
     </div>
   );
