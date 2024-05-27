@@ -1,20 +1,27 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { useFetchWorksQuery } from '../../../app/api';
-import { StyledSpin } from '../../../ui';
+import { StyledSpin, SubmitButton } from '../../../ui';
 import { EmptyComponent } from '../empty';
 import { RoutePaths } from '../../../shared/route-paths';
 import { useNavigate } from 'react-router-dom';
-import { Button, notification, Table } from 'antd';
+import { Button, Form, Input, notification, Table } from 'antd';
 import { notificationHelper } from '../../../shared/helpers';
 import styled from 'styled-components';
 import { TimeParseService } from '../../../shared/services';
+import { useForm } from 'antd/es/form/Form';
 
 export const AdminWorks = () => {
   const navigate = useNavigate();
   const [api, contextHolder] = notification.useNotification();
+  const [form] = useForm();
 
   const [page, setPage] = useState(1);
-  const { data, isLoading, error } = useFetchWorksQuery({ limit: 10, page });
+  const [search, setSearch] = useState<string | undefined>(undefined);
+  const { data, isLoading, error } = useFetchWorksQuery({
+    limit: 10,
+    page,
+    search,
+  });
 
   const columns = [
     { title: 'Вид', dataIndex: 'name', key: 'name' },
@@ -28,25 +35,42 @@ export const AdminWorks = () => {
     },
     [navigate],
   );
+  const onClickSubmit = () => {
+    const value = form.getFieldsValue().search;
+    setSearch(Boolean(value) ? value : undefined);
+    setPage(1);
+  };
+
   useEffect(() => {
     notificationHelper({ api, error });
   }, [api, error]);
+  useEffect(() => {}, [search]);
 
   return (
     <div>
       {contextHolder}
       {isLoading && <StyledSpin />}
-      {data && !data.data.length && (
+      {data && !search && !data.data.length && (
         <EmptyComponent createNewTitle={'Добавить вид работ'} link={RoutePaths.newWork} />
       )}
-      {data?.data.length && (
+      {(data?.data.length || search) && (
         <>
           <StyledButton type={'primary'} onClick={() => navigate(RoutePaths.newWork)}>
             Добавить вид работ
           </StyledButton>
+          <Form form={form} style={{ marginBottom: '20px' }} layout={'inline'}>
+            <Form.Item name={'search'}>
+              <Input placeholder={'Введите вид работ'} style={{ width: '300px' }} />
+            </Form.Item>
+            <Form.Item>
+              <SubmitButton form={form} onClick={onClickSubmit} loading={isLoading}>
+                Поиск
+              </SubmitButton>
+            </Form.Item>
+          </Form>
           <Table
             columns={columns}
-            dataSource={data.data.map((item) => ({
+            dataSource={data?.data.map((item) => ({
               ...item,
               key: item.id,
               time: TimeParseService.toHoursAndMinutesString(item.time),
