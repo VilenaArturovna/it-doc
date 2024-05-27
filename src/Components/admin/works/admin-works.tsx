@@ -45,7 +45,6 @@ export const AdminWorks = () => {
   useEffect(() => {
     notificationHelper({ api, error });
   }, [api, error]);
-  useEffect(() => {}, [search]);
 
   return (
     <div>
