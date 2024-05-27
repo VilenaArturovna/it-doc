@@ -1,6 +1,6 @@
 import { Form, InputNumber, Modal, notification, Space } from 'antd';
 import { GetAllDeadlinesDaoModel } from '../../../shared/types/api/generated';
-import { DeadlineParseService } from '../../../shared/services';
+import { TimeParseService } from '../../../shared/services';
 import { useUpdateDeadlineMutation } from '../../../app/api';
 import { useEffect } from 'react';
 import { notificationHelper } from '../../../shared/helpers';
@@ -24,12 +24,8 @@ export const UpdateDeadline = ({ deadline, isModalOpen, setIsModalOpen }: Props)
   const [api, contextHolder] = notification.useNotification();
   const [form] = Form.useForm<FormValues>();
 
-  const { hours: normalHours, minutes: normalMinutes } = DeadlineParseService.toHoursAndMinutes(
-    deadline.normal,
-  );
-  const { hours: urgentHours, minutes: urgentMinutes } = DeadlineParseService.toHoursAndMinutes(
-    deadline.urgent,
-  );
+  const { hours: normalHours, minutes: normalMinutes } = TimeParseService.toHoursAndMinutes(deadline.normal);
+  const { hours: urgentHours, minutes: urgentMinutes } = TimeParseService.toHoursAndMinutes(deadline.urgent);
 
   const initialValues = {
     normalHours,
@@ -40,11 +36,11 @@ export const UpdateDeadline = ({ deadline, isModalOpen, setIsModalOpen }: Props)
 
   const handleOk = () => {
     const values = form.getFieldsValue();
-    const normal = +DeadlineParseService.toMinutes({
+    const normal = +TimeParseService.toMinutes({
       hours: values.normalHours,
       minutes: values.normalMinutes,
     });
-    const urgent = +DeadlineParseService.toMinutes({
+    const urgent = +TimeParseService.toMinutes({
       hours: values.urgentHours,
       minutes: values.urgentMinutes,
     });

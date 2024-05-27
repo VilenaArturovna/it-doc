@@ -5,3 +5,4 @@ export * from './staff-api';
 export * from './deadlines-api';
 export * from './providers-api';
 export * from './vendors-api';
+export * from './works-api';

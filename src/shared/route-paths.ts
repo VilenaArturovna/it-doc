@@ -33,4 +33,10 @@ export const RoutePaths = {
   editVendor: '/admin/vendors/:id/edit',
   getVendorRoute: (id: string) => `/admin/vendors/${id}`,
   getEditVendorRoute: (id: string) => `/admin/vendors/${id}/edit`,
+  works: '/admin/works',
+  work: '/admin/works/:id',
+  newWork: '/admin/works/new',
+  editWork: '/admin/works/:id/edit',
+  getWorkRoute: (id: string) => `/admin/works/${id}`,
+  getEditWorkRoute: (id: string) => `/admin/works/${id}/edit`,
 };

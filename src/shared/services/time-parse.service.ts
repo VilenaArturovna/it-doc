@@ -3,7 +3,7 @@ interface IProps {
   minutes: number;
 }
 
-export class DeadlineParseService {
+export class TimeParseService {
   static toMinutes({ hours, minutes }: IProps): number {
     return Number(hours) * 60 + Number(minutes);
   }
@@ -15,7 +15,7 @@ export class DeadlineParseService {
   }
 
   static toHoursAndMinutesString(value: number): string {
-    const { hours, minutes } = DeadlineParseService.toHoursAndMinutes(value);
+    const { hours, minutes } = TimeParseService.toHoursAndMinutes(value);
 
     if (hours && minutes) {
       return `${hours} ч ${minutes} мин`;

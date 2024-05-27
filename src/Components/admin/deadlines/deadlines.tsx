@@ -5,7 +5,7 @@ import { orderStatusMapper } from '../../../shared/mappers';
 import { StyledSpin } from '../../../ui';
 import { useEffect, useState } from 'react';
 import { notificationHelper } from '../../../shared/helpers';
-import { DeadlineParseService } from '../../../shared/services';
+import { TimeParseService } from '../../../shared/services';
 import { UpdateDeadline } from './update-deadline';
 
 interface ColumnsType extends Pick<GetAllDeadlinesDaoModel, 'id'> {
@@ -70,8 +70,8 @@ export const Deadlines = () => {
           dataSource={data.map((item) => ({
             ...item,
             name: orderStatusMapper(item.name),
-            urgent: DeadlineParseService.toHoursAndMinutesString(item.urgent),
-            normal: DeadlineParseService.toHoursAndMinutesString(item.normal),
+            urgent: TimeParseService.toHoursAndMinutesString(item.urgent),
+            normal: TimeParseService.toHoursAndMinutesString(item.normal),
           }))}
         />
       )}
