@@ -11,18 +11,22 @@ import {
   EditProvider,
   EditStaff,
   EditTask,
+  EditVendor,
   NewClient,
   NewProvider,
   NewStaff,
   NewTask,
+  NewVendor,
   OneProvider,
   OneStaff,
+  OneVendor,
   Orders,
   Profile,
   Providers,
   Staff,
   Task,
   Tasks,
+  Vendors,
 } from './Components';
 import { AdminLayout, SiteLayout } from './Components/layouts';
 import { RoutePaths } from './shared/route-paths';
@@ -54,6 +58,10 @@ function App() {
           <Route path={RoutePaths.provider} element={<OneProvider />} />
           <Route path={RoutePaths.newProvider} element={<NewProvider />} />
           <Route path={RoutePaths.editProvider} element={<EditProvider />} />
+          <Route path={RoutePaths.vendors} element={<Vendors />} />
+          <Route path={RoutePaths.vendor} element={<OneVendor />} />
+          <Route path={RoutePaths.newVendor} element={<NewVendor />} />
+          <Route path={RoutePaths.editVendor} element={<EditVendor />} />
         </Route>
       </Routes>
     </ThemeProvider>

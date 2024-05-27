@@ -1,5 +1,5 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { clientsApi, deadlinesApi, ordersApi, providersApi, staffApi, tasksApi } from '../api';
+import { clientsApi, deadlinesApi, ordersApi, providersApi, staffApi, tasksApi, vendorsApi } from '../api';
 
 const rootReducer = combineReducers({
   [tasksApi.reducerPath]: tasksApi.reducer,
@@ -8,6 +8,7 @@ const rootReducer = combineReducers({
   [staffApi.reducerPath]: staffApi.reducer,
   [deadlinesApi.reducerPath]: deadlinesApi.reducer,
   [providersApi.reducerPath]: providersApi.reducer,
+  [vendorsApi.reducerPath]: vendorsApi.reducer,
 });
 
 const middlewares = [
@@ -17,6 +18,7 @@ const middlewares = [
   staffApi.middleware,
   deadlinesApi.middleware,
   providersApi.middleware,
+  vendorsApi.middleware,
 ];
 
 export const store = configureStore({
