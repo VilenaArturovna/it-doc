@@ -4,7 +4,7 @@ import { FormVendorType } from './types';
 import React, { useEffect } from 'react';
 import { notificationHelper } from '../../../shared/helpers';
 import { VendorForm } from './vendor-form';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { StyledSpin } from '../../../ui';
 
 export const EditVendor = () => {
@@ -13,7 +13,6 @@ export const EditVendor = () => {
 
   const [form] = Form.useForm();
   const [api, contextHolder] = notification.useNotification();
-  const navigate = useNavigate();
 
   const [updateVendor, { isLoading, isSuccess, error }] = useUpdateVendorMutation();
   const { data, isLoading: isLoadingFetch, error: fetchError } = useGetOneVendorQuery(id);
@@ -36,8 +35,7 @@ export const EditVendor = () => {
         error,
         messageSuccess: 'Вендор успешно изменен',
       });
-    isSuccess && navigate(-1);
-  }, [api, isSuccess, error]);
+  }, [api, isSuccess, error, fetchError]);
   useEffect(() => {}, [data]);
 
   return (

@@ -4,8 +4,7 @@ import { DatePicker, Form, Input, notification } from 'antd';
 import { useUpdateStaffMutation } from '../../../app/api';
 import React, { useEffect } from 'react';
 import { notificationHelper } from '../../../shared/helpers';
-import { useNavigate } from 'react-router-dom';
-import { BackButton, SubmitButton } from '../../../ui';
+import { BackButton, StyledSpin, SubmitButton } from '../../../ui';
 import styled from 'styled-components';
 import { useGetMe } from '../../../hooks';
 
@@ -16,10 +15,9 @@ interface FormValues extends Omit<CreateStaffRequestDto, 'birthdate' | 'role' | 
 export const EditStaff = () => {
   const [form] = Form.useForm<FormValues>();
   const [api, contextHolder] = notification.useNotification();
-  const navigate = useNavigate();
 
   const [updateStaff, { isLoading, error, isSuccess }] = useUpdateStaffMutation();
-  const { user } = useGetMe();
+  const { user, isUserLoading, error: fetchError } = useGetMe();
 
   const onClickSubmit = () => {
     const values = form.getFieldsValue();
@@ -29,7 +27,6 @@ export const EditStaff = () => {
       phone: `+7${values.phone}`,
       avatar: user?.avatar,
     });
-    navigate(-1);
   };
 
   const initialValues: FormValues | undefined = user
@@ -43,17 +40,23 @@ export const EditStaff = () => {
     : undefined;
 
   useEffect(() => {
-    notificationHelper({
-      api,
-      form,
-      isSuccess,
-      error,
-      messageSuccess: 'Данные сотрудника обновлены',
-    });
-  }, [isSuccess, error]);
+    fetchError &&
+      notificationHelper({
+        api,
+        error: fetchError,
+      });
+    (isSuccess || error) &&
+      notificationHelper({
+        api,
+        isSuccess,
+        error,
+        messageSuccess: 'Данные обновлены',
+      });
+  }, [api, isSuccess, error, fetchError]);
   return (
     <Root>
       {contextHolder}
+      {isUserLoading && <StyledSpin />}
       {initialValues && (
         <StyledForm layout="vertical" form={form} initialValues={initialValues}>
           <Form.Item

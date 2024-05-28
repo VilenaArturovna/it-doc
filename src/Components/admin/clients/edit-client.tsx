@@ -3,7 +3,7 @@ import { useGetOneClientQuery, useUpdateClientMutation } from '../../../app/api'
 import React, { useEffect } from 'react';
 import { notificationHelper } from '../../../shared/helpers';
 import { ClientForm } from './client-form';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { StyledSpin } from '../../../ui';
 import { UpdateClientRequestDto } from '../../../shared/types/api/generated';
 
@@ -13,7 +13,6 @@ export const EditClient = () => {
 
   const [form] = Form.useForm<UpdateClientRequestDto>();
   const [api, contextHolder] = notification.useNotification();
-  const navigate = useNavigate();
 
   const [updateClient, { isLoading, isSuccess, error }] = useUpdateClientMutation();
   const { data, isLoading: isLoadingFetch, error: fetchError } = useGetOneClientQuery(id);
@@ -36,7 +35,6 @@ export const EditClient = () => {
         error,
         messageSuccess: 'Клиент успешно изменен',
       });
-    isSuccess && navigate(-1);
   }, [api, isSuccess, error, fetchError]);
   useEffect(() => {}, [data]);
 

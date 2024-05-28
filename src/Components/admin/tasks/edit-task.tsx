@@ -3,7 +3,7 @@ import { Form, notification } from 'antd';
 import { useEffect } from 'react';
 import { notificationHelper } from '../../../shared/helpers';
 import { TaskForm } from './task-form';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import dayjs from 'dayjs';
 import { TaskFormValues } from './types';
 import { StyledSpin } from '../../../ui';
@@ -13,12 +13,10 @@ export const EditTask = () => {
   if (!id) throw new Error('id is required');
 
   const [updateTask, { isLoading, isSuccess, error }] = useUpdateTaskMutation();
-  const { data: task } = useGetOneTaskQuery(id);
+  const { data: task, isLoading: fetchLoading, error: fetchError } = useGetOneTaskQuery(id);
 
   const [form] = Form.useForm();
   const [api, contextHolder] = notification.useNotification();
-
-  const navigate = useNavigate();
 
   const onClickSubmit = () => {
     const values: TaskFormValues = form.getFieldsValue();
@@ -29,21 +27,25 @@ export const EditTask = () => {
   };
 
   useEffect(() => {
-    notificationHelper({
-      api,
-      form,
-      isSuccess,
-      error,
-      messageSuccess: 'Задание успешно изменено',
-    });
-    isSuccess && navigate(-1);
-  }, [isSuccess, error]);
+    fetchError &&
+      notificationHelper({
+        api,
+        error: fetchError,
+      });
+    (isSuccess || error) &&
+      notificationHelper({
+        api,
+        isSuccess,
+        error,
+        messageSuccess: 'Задание успешно изменено',
+      });
+  }, [api, isSuccess, error, fetchError]);
   useEffect(() => {}, [task]);
 
   return (
     <>
       {contextHolder}
-      {isLoading && <StyledSpin />}
+      {fetchLoading && <StyledSpin />}
       <TaskForm
         isLoading={isLoading}
         buttonTitle={'Изменить'}

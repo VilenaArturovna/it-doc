@@ -4,7 +4,7 @@ import { FormWorkType } from './types';
 import React, { useEffect } from 'react';
 import { notificationHelper } from '../../../shared/helpers';
 import { WorkForm } from './work-form';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { StyledSpin } from '../../../ui';
 import { TimeParseService } from '../../../shared/services';
 
@@ -14,7 +14,6 @@ export const EditWork = () => {
 
   const [form] = Form.useForm();
   const [api, contextHolder] = notification.useNotification();
-  const navigate = useNavigate();
 
   const [updateWork, { isLoading, isSuccess, error }] = useUpdateWorkMutation();
   const { data, isLoading: isLoadingFetch, error: fetchError } = useGetOneWorkQuery(id);
@@ -41,8 +40,7 @@ export const EditWork = () => {
         error,
         messageSuccess: 'Вид работ успешно изменен',
       });
-    isSuccess && navigate(-1);
-  }, [api, isSuccess, error]);
+  }, [api, isSuccess, error, fetchError]);
   useEffect(() => {}, [data]);
 
   return (
