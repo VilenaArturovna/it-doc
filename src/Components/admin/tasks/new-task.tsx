@@ -27,13 +27,15 @@ export const NewTask = () => {
   }, [isSuccess, error]);
 
   return (
-    <TaskForm
-      isLoading={isLoading}
-      buttonTitle={'Создать'}
-      contextHolder={contextHolder}
-      onClickSubmit={onClickSubmit}
-      form={form}
-      formTitle={'Новое задание'}
-    />
+    <>
+      {contextHolder}
+      <TaskForm
+        isLoading={isLoading}
+        buttonTitle={'Создать'}
+        onClickSubmit={onClickSubmit}
+        form={form}
+        formTitle={'Новое задание'}
+      />
+    </>
   );
 };

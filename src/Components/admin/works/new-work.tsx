@@ -32,13 +32,15 @@ export const NewWork = () => {
   }, [api, isSuccess, error]);
 
   return (
-    <WorkForm
-      isLoading={isLoading}
-      buttonTitle={'Создать'}
-      contextHolder={contextHolder}
-      onClickSubmit={onClickSubmit}
-      form={form}
-      formTitle={'Новый вид работ'}
-    />
+    <>
+      {contextHolder}
+      <WorkForm
+        isLoading={isLoading}
+        buttonTitle={'Создать'}
+        onClickSubmit={onClickSubmit}
+        form={form}
+        formTitle={'Новый вид работ'}
+      />
+    </>
   );
 };

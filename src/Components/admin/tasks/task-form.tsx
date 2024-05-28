@@ -12,7 +12,6 @@ type Props = {
   buttonTitle: string;
   formTitle: string;
   onClickSubmit: () => void;
-  contextHolder: React.ReactElement<any, string | React.JSXElementConstructor<any>>;
   form: FormInstance;
   initialValues?: TaskFormValues;
 };
@@ -21,7 +20,6 @@ export const TaskForm = ({
   isLoading,
   buttonTitle,
   onClickSubmit,
-  contextHolder,
   form,
   initialValues,
   formTitle,
@@ -32,7 +30,6 @@ export const TaskForm = ({
 
   return (
     <Root>
-      {contextHolder}
       <Title level={4}>{formTitle}</Title>
       <StyledForm layout="vertical" form={form} initialValues={initialValues}>
         <Form.Item

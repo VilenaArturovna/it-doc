@@ -37,16 +37,16 @@ export const EditClient = () => {
         messageSuccess: 'Клиент успешно изменен',
       });
     isSuccess && navigate(-1);
-  }, [api, isSuccess, error]);
+  }, [api, isSuccess, error, fetchError]);
   useEffect(() => {}, [data]);
 
   return (
     <>
+      {contextHolder}
       {isLoadingFetch && <StyledSpin />}
       <ClientForm
         isLoading={isLoading}
         buttonTitle={'Изменить'}
-        contextHolder={contextHolder}
         onClickSubmit={onClickSubmit}
         form={form}
         formTitle={'Изменение клиента'}

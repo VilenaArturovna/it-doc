@@ -43,10 +43,10 @@ export const EditVendor = () => {
   return (
     <>
       {isLoadingFetch && <StyledSpin />}
+      {contextHolder}
       <VendorForm
         isLoading={isLoading}
         buttonTitle={'Изменить'}
-        contextHolder={contextHolder}
         onClickSubmit={onClickSubmit}
         form={form}
         formTitle={'Изменение вендора'}

@@ -10,7 +10,6 @@ type Props = {
   buttonTitle: string;
   formTitle: string;
   onClickSubmit: () => void;
-  contextHolder: React.ReactElement<any, string | React.JSXElementConstructor<any>>;
   form: FormInstance;
   initialValues?: FormVendorType;
 };
@@ -19,7 +18,6 @@ export const VendorForm = ({
   isLoading,
   buttonTitle,
   onClickSubmit,
-  contextHolder,
   form,
   initialValues,
   formTitle,
@@ -27,7 +25,6 @@ export const VendorForm = ({
   useEffect(() => {}, [initialValues]);
   return (
     <Root>
-      {contextHolder}
       <Title level={4}>{formTitle}</Title>
       <Form form={form} style={{ width: '400px' }} initialValues={initialValues}>
         <Form.Item

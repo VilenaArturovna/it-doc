@@ -27,14 +27,16 @@ export const NewClient = () => {
   }, [api, isSuccess, error]);
 
   return (
-    <ClientForm
-      isLoading={isLoading}
-      buttonTitle={'Создать'}
-      contextHolder={contextHolder}
-      onClickSubmit={onClickSubmit}
-      form={form}
-      formTitle={'Новый клиент'}
-      isCreating={true}
-    />
+    <>
+      {contextHolder}
+      <ClientForm
+        isLoading={isLoading}
+        buttonTitle={'Создать'}
+        onClickSubmit={onClickSubmit}
+        form={form}
+        formTitle={'Новый клиент'}
+        isCreating={true}
+      />
+    </>
   );
 };

@@ -27,13 +27,15 @@ export const NewVendor = () => {
   }, [api, isSuccess, error]);
 
   return (
-    <VendorForm
-      isLoading={isLoading}
-      buttonTitle={'Создать'}
-      contextHolder={contextHolder}
-      onClickSubmit={onClickSubmit}
-      form={form}
-      formTitle={'Новый вендор'}
-    />
+    <>
+      {contextHolder}
+      <VendorForm
+        isLoading={isLoading}
+        buttonTitle={'Создать'}
+        onClickSubmit={onClickSubmit}
+        form={form}
+        formTitle={'Новый вендор'}
+      />
+    </>
   );
 };

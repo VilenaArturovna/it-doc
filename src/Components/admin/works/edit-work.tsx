@@ -48,10 +48,10 @@ export const EditWork = () => {
   return (
     <>
       {isLoadingFetch && <StyledSpin />}
+      {contextHolder}
       <WorkForm
         isLoading={isLoading}
         buttonTitle={'Изменить'}
-        contextHolder={contextHolder}
         onClickSubmit={onClickSubmit}
         form={form}
         formTitle={'Изменение вида работ'}

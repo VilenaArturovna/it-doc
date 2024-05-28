@@ -6,6 +6,7 @@ import { TaskForm } from './task-form';
 import { useNavigate, useParams } from 'react-router-dom';
 import dayjs from 'dayjs';
 import { TaskFormValues } from './types';
+import { StyledSpin } from '../../../ui';
 
 export const EditTask = () => {
   const { id } = useParams<{ id: string }>();
@@ -40,24 +41,27 @@ export const EditTask = () => {
   useEffect(() => {}, [task]);
 
   return (
-    <TaskForm
-      isLoading={isLoading}
-      buttonTitle={'Изменить'}
-      formTitle={`Редактирование задания ${task?.number}`}
-      contextHolder={contextHolder}
-      onClickSubmit={onClickSubmit}
-      form={form}
-      initialValues={
-        task
-          ? {
-              theme: task.theme,
-              description: task.description,
-              responsibleStaffId: task.participants.find((p) => p.isResponsible)?.staff.id,
-              price: task.price ? Number(task.price) : undefined,
-              deadline: task.deadline ? dayjs(task.deadline) : undefined,
-            }
-          : undefined
-      }
-    />
+    <>
+      {contextHolder}
+      {isLoading && <StyledSpin />}
+      <TaskForm
+        isLoading={isLoading}
+        buttonTitle={'Изменить'}
+        formTitle={`Редактирование задания ${task?.number}`}
+        onClickSubmit={onClickSubmit}
+        form={form}
+        initialValues={
+          task
+            ? {
+                theme: task.theme,
+                description: task.description,
+                responsibleStaffId: task.participants.find((p) => p.isResponsible)?.staff.id,
+                price: task.price ? Number(task.price) : undefined,
+                deadline: task.deadline ? dayjs(task.deadline) : undefined,
+              }
+            : undefined
+        }
+      />
+    </>
   );
 };

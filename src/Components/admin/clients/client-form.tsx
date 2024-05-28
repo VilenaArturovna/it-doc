@@ -15,7 +15,6 @@ type Props = {
   buttonTitle: string;
   formTitle: string;
   onClickSubmit: () => void;
-  contextHolder: React.ReactElement<any, string | React.JSXElementConstructor<any>>;
   form: FormInstance;
   isCreating: boolean;
   initialValues?: CreateClientRequestDto | UpdateClientRequestDto;
@@ -25,7 +24,6 @@ export const ClientForm = ({
   isLoading,
   buttonTitle,
   onClickSubmit,
-  contextHolder,
   form,
   initialValues,
   formTitle,
@@ -42,7 +40,6 @@ export const ClientForm = ({
   useEffect(() => {}, [initialValues, required]);
   return (
     <Root>
-      {contextHolder}
       <Title level={4}>{formTitle}</Title>
       <Form
         form={form}
