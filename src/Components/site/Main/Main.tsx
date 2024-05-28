@@ -1,4 +1,4 @@
-import logo from './../../Assets/Images/IT Doc Team.png';
+import logo from '../../../Assets/Images/IT Doc Team.png';
 import styled from 'styled-components';
 
 export const Main = () => {
