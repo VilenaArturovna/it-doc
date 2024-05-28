@@ -9,8 +9,8 @@ import 'swiper/components/navigation/navigation.scss';
 import 'swiper/components/scrollbar/scrollbar.scss';
 import './styles.scss';
 
-import slide1 from './../../Assets/Images/слайдер_1_.jpg';
-import slide2 from './../../Assets/Images/слайдер_2_.jpg';
+import slide1 from '../../../Assets/Images/слайдер_1_.jpg';
+import slide2 from '../../../Assets/Images/слайдер_2_.jpg';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 

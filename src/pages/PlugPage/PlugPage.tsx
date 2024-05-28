@@ -1,4 +1,4 @@
-import { Plug } from '../../Components/Plug/Plug';
+import { Plug } from '../../Components/site/Plug/Plug';
 
 export function PlugPage() {
   return <Plug />;

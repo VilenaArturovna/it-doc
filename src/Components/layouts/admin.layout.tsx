@@ -15,7 +15,7 @@ enum MenuKeys {
   vendors = 'vendors',
   clients = 'clients',
   staff = 'staff',
-  warehouse = 'warehouse',
+  warehouse = 'warehouse-items',
   deadlines = 'deadlines',
   works = 'works',
 }

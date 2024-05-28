@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import logo from '../../Assets/Images/IT Doc Team.png';
+import logo from '../../../Assets/Images/IT Doc Team.png';
 import React from 'react';
 
 export function Plug() {

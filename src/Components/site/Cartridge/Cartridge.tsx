@@ -1,4 +1,4 @@
-import cartridge from './../../Assets/Images/kartridj_gg_2.png';
+import cartridge from '../../../Assets/Images/kartridj_gg_2.png';
 import styled from 'styled-components';
 
 export const Cartridge = () => {

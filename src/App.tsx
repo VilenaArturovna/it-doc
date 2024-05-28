@@ -33,8 +33,13 @@ import {
   OneVendor,
   NewVendor,
   EditVendor,
+  WarehouseItems,
+  WarehouseItem,
+  NewWarehouseItem,
+  EditWarehouseItem,
+  AdminLayout,
+  SiteLayout,
 } from './Components';
-import { AdminLayout, SiteLayout } from './Components/layouts';
 import { RoutePaths } from './shared/route-paths';
 
 function App() {
@@ -74,6 +79,10 @@ function App() {
           <Route path={RoutePaths.work} element={<OneWork />} />
           <Route path={RoutePaths.newWork} element={<NewWork />} />
           <Route path={RoutePaths.editWork} element={<EditWork />} />
+          <Route path={RoutePaths.warehouseItems} element={<WarehouseItems />} />
+          <Route path={RoutePaths.warehouseItem} element={<WarehouseItem />} />
+          <Route path={RoutePaths.newWarehouseItem} element={<NewWarehouseItem />} />
+          <Route path={RoutePaths.editWarehouseItem} element={<EditWarehouseItem />} />
         </Route>
       </Routes>
     </ThemeProvider>

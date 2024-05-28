@@ -1,4 +1,4 @@
-import bg from '../../Assets/Images/tild3366-6633-4839-a638-633363316466__1.jpg';
+import bg from '../../../Assets/Images/tild3366-6633-4839-a638-633363316466__1.jpg';
 import styled from 'styled-components';
 
 export const BgBlock = () => {

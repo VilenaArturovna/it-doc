@@ -7,6 +7,7 @@ import {
   staffApi,
   tasksApi,
   vendorsApi,
+  warehouseApi,
   worksApi,
 } from '../api';
 
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   [providersApi.reducerPath]: providersApi.reducer,
   [vendorsApi.reducerPath]: vendorsApi.reducer,
   [worksApi.reducerPath]: worksApi.reducer,
+  [warehouseApi.reducerPath]: warehouseApi.reducer,
 });
 
 const middlewares = [
@@ -30,6 +32,7 @@ const middlewares = [
   providersApi.middleware,
   vendorsApi.middleware,
   worksApi.middleware,
+  warehouseApi.middleware,
 ];
 
 export const store = configureStore({

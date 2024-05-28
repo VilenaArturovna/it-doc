@@ -6,3 +6,4 @@ export * from './deadlines';
 export * from './providers';
 export * from './vendors';
 export * from './works';
+export * from './warehouse';

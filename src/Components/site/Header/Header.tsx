@@ -1,6 +1,6 @@
 import React from 'react';
-import logo from './../../Assets/Images/horizontal_on_transparent_2000x899px_by_logaster.png';
-import logoRicoh from './../../Assets/Images/Ricoh_partner.png';
+import logo from '../../../Assets/Images/horizontal_on_transparent_2000x899px_by_logaster.png';
+import logoRicoh from '../../../Assets/Images/Ricoh_partner.png';
 import styled from 'styled-components';
 
 export const Header = () => {

@@ -42,4 +42,10 @@ export const RoutePaths = {
   editWork: '/admin/works/:id/edit',
   getWorkRoute: (id: string) => `/admin/works/${id}`,
   getEditWorkRoute: (id: string) => `/admin/works/${id}/edit`,
+  warehouseItems: '/admin/warehouse-items',
+  warehouseItem: '/admin/warehouse-items/:id',
+  newWarehouseItem: '/admin/warehouse-items/new',
+  editWarehouseItem: '/admin/warehouse-items/:id/edit',
+  getWarehouseItemRoute: (id: string) => `/admin/warehouse-items/${id}`,
+  getEditWarehouseItemRoute: (id: string) => `/admin/warehouse-items/${id}/edit`,
 };
