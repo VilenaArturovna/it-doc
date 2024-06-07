@@ -54,6 +54,9 @@ export const Staff = () => {
               onClick: () => {
                 onClick(record.id);
               },
+              style: {
+                background: record.isRemoved ? '#f3cece' : '#fff',
+              },
             })}
             pagination={{
               total: data?.total || 0,

@@ -39,6 +39,10 @@ import {
   EditWarehouseItem,
   AdminLayout,
   SiteLayout,
+  OneOrder,
+  NewOrder,
+  EditOrder,
+  OrderDiagnosed,
 } from './Components';
 import { RoutePaths } from './shared/route-paths';
 
@@ -53,6 +57,10 @@ function App() {
         <Route path={RoutePaths.login} element={<LoginPage />} />
         <Route path={RoutePaths.adminLayout} element={<AdminLayout />}>
           <Route path={RoutePaths.orders} element={<Orders />} />
+          <Route path={RoutePaths.order} element={<OneOrder />} />
+          <Route path={RoutePaths.newOrder} element={<NewOrder />} />
+          <Route path={RoutePaths.editOrder} element={<EditOrder />} />
+          <Route path={RoutePaths.orderDiagnosed} element={<OrderDiagnosed />} />
           <Route path={RoutePaths.tasks} element={<Tasks />} />
           <Route path={RoutePaths.task} element={<Task />} />
           <Route path={RoutePaths.newTask} element={<NewTask />} />

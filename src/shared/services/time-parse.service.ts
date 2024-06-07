@@ -5,12 +5,12 @@ interface IProps {
 
 export class TimeParseService {
   static toMinutes({ hours, minutes }: IProps): number {
-    return Number(hours) * 60 + Number(minutes);
+    return Math.ceil(Number(hours) * 60 + Number(minutes));
   }
 
   static toHoursAndMinutes(value: number): IProps {
     const hours = Math.floor(value / 60);
-    const minutes = value - hours * 60;
+    const minutes = Math.ceil(value - hours * 60);
     return { hours, minutes };
   }
 

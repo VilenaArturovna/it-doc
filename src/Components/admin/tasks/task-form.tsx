@@ -24,7 +24,7 @@ export const TaskForm = ({
   initialValues,
   formTitle,
 }: Props) => {
-  const { data, isLoading: loadingStaff } = useFetchStaffQuery({ page: 1, limit: 100 });
+  const { data, isLoading: loadingStaff } = useFetchStaffQuery({ page: 1, limit: 100, isActive: true });
 
   useEffect(() => {}, [initialValues]);
 

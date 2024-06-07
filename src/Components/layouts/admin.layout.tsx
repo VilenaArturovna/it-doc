@@ -22,7 +22,7 @@ enum MenuKeys {
 
 const items: MenuItem[] = [
   {
-    label: 'Заказы',
+    label: 'Заявки',
     key: MenuKeys.orders,
   },
   {

@@ -46,7 +46,7 @@ export const Clients = () => {
     <div>
       {contextHolder}
       {isLoading && <StyledSpin />}
-      {data && !data.data.length && (
+      {data && !data.data.length && !requestBody && (
         <EmptyComponent createNewTitle={'Добавить клиента'} link={RoutePaths.newClient} />
       )}
 
