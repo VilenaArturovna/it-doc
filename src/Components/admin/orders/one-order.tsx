@@ -2,7 +2,15 @@ import { GetOneOrderDaoModel, OrderStatus, Role } from '../../../shared/types/ap
 import { orderPriorityMapper, orderStatusMapper } from '../../../shared/mappers';
 import { DateService } from '../../../shared/services';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Button, Descriptions, DescriptionsProps, notification, Popconfirm } from 'antd';
+import {
+  Button,
+  Descriptions,
+  DescriptionsProps,
+  notification,
+  Popconfirm,
+  Table,
+  TableColumnsType,
+} from 'antd';
 import {
   useCompleteOrderMutation,
   useGetOneOrderQuery,
@@ -96,6 +104,26 @@ const getDescriptions = (data: GetOneOrderDaoModel) => [
   },
 ];
 
+const stages: TableColumnsType = [
+  { title: 'Этап', dataIndex: 'number', key: 'number' },
+  { title: 'Статус', dataIndex: 'status', key: 'status' },
+  { title: 'Дедлайн', dataIndex: 'deadline', key: 'deadline' },
+  { title: 'Начат', dataIndex: 'createdAt', key: 'createdAt' },
+  { title: 'Завершен', dataIndex: 'completedAt', key: 'completedAt' },
+  { title: 'Комментарий', dataIndex: 'comment', key: 'comment' },
+];
+
+const repairParts: TableColumnsType = [
+  { title: 'Наименование', dataIndex: 'title', key: 'title' },
+  { title: 'Количество', dataIndex: 'quantity', key: 'quantity' },
+  { title: 'Общая стоимость', dataIndex: 'cost', key: 'cost' },
+];
+
+const works: TableColumnsType = [
+  { title: 'Наименование', dataIndex: 'name', key: 'name' },
+  { title: 'Общая стоимость', dataIndex: 'price', key: 'price' },
+];
+
 export const OneOrder = () => {
   const { id } = useParams<{ id: string }>();
   if (!id) throw new Error('id is required');
@@ -176,7 +204,46 @@ export const OneOrder = () => {
       {isLoadingFetch && <StyledSpin />}
       {data && (
         <>
-          <StyledDescription items={descriptionsItems} column={1} bordered={true} size={'small'} />
+          <StyledDescription items={descriptionsItems} column={2} bordered={true} size={'small'} />
+          <Table
+            columns={stages}
+            dataSource={data?.stages
+              .map((stage) => ({
+                ...stage,
+                key: stage.id,
+                deadline: stage.deadline ? DateService.format(stage.deadline) : undefined,
+                status: orderStatusMapper(stage.status),
+                createdAt: DateService.format(stage.createdAt),
+                completedAt: stage.completedAt ? DateService.format(stage.completedAt) : undefined,
+              }))
+              .sort((a, b) => a.number - b.number)
+              .reverse()}
+            pagination={false}
+          />
+          {data?.repairParts ? (
+            <Table
+              columns={repairParts}
+              dataSource={data?.repairParts.map((part) => ({
+                ...part,
+                key: part.id,
+              }))}
+              pagination={false}
+            />
+          ) : (
+            ''
+          )}
+          {data?.works ? (
+            <Table
+              columns={works}
+              dataSource={data?.works.map((part) => ({
+                ...part,
+                key: part.id,
+              }))}
+              pagination={false}
+            />
+          ) : (
+            ''
+          )}
           <ButtonGroup>
             <div>
               {isAdmin && data.status !== OrderStatus.Completed ? (
