@@ -1,3 +1,5 @@
 interface Window {
-  onTelegramAuth: (user?: any) => void;
+  TelegramAuth: {
+    onAuth: (user: any) => void;
+  };
 }

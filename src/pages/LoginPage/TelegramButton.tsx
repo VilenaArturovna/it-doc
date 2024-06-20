@@ -8,7 +8,9 @@ export function TelegramButton({ onSubmit }: AuthFormProps) {
   const rootRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    window.onTelegramAuth = onSubmit;
+    window.TelegramAuth = {
+      onAuth: onSubmit,
+    };
 
     const isTabletL = true;
 
@@ -20,7 +22,7 @@ export function TelegramButton({ onSubmit }: AuthFormProps) {
     script.setAttribute('data-telegram-login', `ITdocBot`);
     script.setAttribute('data-size', tgDataSize);
     script.setAttribute('data-request-access', 'write');
-    script.setAttribute('data-onauth', 'onTelegramAuth');
+    script.setAttribute('data-onauth', 'TelegramAuth.onAuth(user)');
     script.async = true;
 
     rootRef.current?.appendChild(script);
