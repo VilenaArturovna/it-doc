@@ -113,6 +113,12 @@ export const ordersApi = createApi({
       }),
       invalidatesTags: ['Orders', 'Order'],
     }),
+    getCertificateOfTechnicalCondition: builder.query<Blob, string>({
+      query: (id: string) => ({
+        url: routes.order.certificateOfTechnicalCondition(id),
+        responseHandler: (response) => response.blob(),
+      }),
+    }),
   }),
 });
 
@@ -129,4 +135,5 @@ export const {
   useTakeToWorkOrderMutation,
   usePutOrderInQueueForDiagnosticMutation,
   useStartDiagnosticForOrderMutation,
+  useLazyGetCertificateOfTechnicalConditionQuery,
 } = ordersApi;

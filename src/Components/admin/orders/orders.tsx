@@ -35,9 +35,9 @@ export const Orders = () => {
   const [form] = useForm<GetManyOrdersRequestDto>();
 
   const [page, setPage] = useState(1);
-  const [requestBody, setRequestBody] = useState<Omit<GetManyOrdersRequestDto, 'page' | 'limit'> | undefined>(
-    undefined,
-  );
+  const [requestBody, setRequestBody] = useState<Omit<GetManyOrdersRequestDto, 'page' | 'limit'>>({
+    isActive: false,
+  });
 
   const { data, isLoading, error } = useFetchOrdersQuery({ page, limit: 10, ...requestBody });
 

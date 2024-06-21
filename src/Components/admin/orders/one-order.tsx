@@ -13,6 +13,7 @@ import {
 } from 'antd';
 import {
   useCompleteOrderMutation,
+  useLazyGetCertificateOfTechnicalConditionQuery,
   useGetOneOrderQuery,
   useOrderReadyMutation,
   usePutOrderInQueueForDiagnosticMutation,
@@ -28,6 +29,7 @@ import { useGetMe } from '../../../hooks';
 import { RoutePaths } from '../../../shared/route-paths';
 import { ApproveOrderModal } from './approve-order-modal';
 import dayjs from 'dayjs';
+import FileService from '../../../shared/services/file-service';
 
 const getDescriptions = (data: GetOneOrderDaoModel) => [
   {
@@ -148,6 +150,14 @@ export const OneOrder = () => {
   const [complete] = useCompleteOrderMutation();
   const [updateOrder, { isLoading: isLoadingUpdate, error: updateError }] = useUpdateOrderMutation();
 
+  const [getCertOfTechnicalCondition, { isLoading: loadingCert }] =
+    useLazyGetCertificateOfTechnicalConditionQuery();
+
+  const getCertificateOfTechnicalCondition = async () => {
+    const res = await getCertOfTechnicalCondition(id).unwrap();
+    FileService.downloadBlob(res);
+  };
+
   const renderButton = () => {
     if (!data) return;
     let title: string | undefined = undefined;
@@ -192,6 +202,16 @@ export const OneOrder = () => {
       );
     }
   };
+
+  const statusesAfterDiagnostic: OrderStatus[] = [
+    OrderStatus.Completed,
+    OrderStatus.Approved,
+    OrderStatus.InProgress,
+    OrderStatus.Diagnosed,
+    OrderStatus.Ready,
+    OrderStatus.ApprovedAndSparePartIsOrdered,
+  ];
+  const canDownloadCertOfTechnicalCondition = data && statusesAfterDiagnostic.includes(data.status);
 
   useEffect(() => {
     fetchError && notificationHelper({ api, error: fetchError });
@@ -268,6 +288,17 @@ export const OneOrder = () => {
               {isAdmin && data.status === OrderStatus.Diagnosed ? (
                 <StyledButton onClick={() => setIsModalOpen(true)} type="primary">
                   Подтвердить
+                </StyledButton>
+              ) : (
+                ''
+              )}
+              {canDownloadCertOfTechnicalCondition ? (
+                <StyledButton
+                  type="primary"
+                  onClick={getCertificateOfTechnicalCondition}
+                  loading={loadingCert}
+                >
+                  Акт технического состояния
                 </StyledButton>
               ) : (
                 ''

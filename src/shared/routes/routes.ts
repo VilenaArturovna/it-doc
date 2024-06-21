@@ -43,6 +43,7 @@ export const routes = {
     root: orderRoot,
     byId: (id: string) => orderById(id),
     putInQueueForDiagnostics: (id: string) => `${orderById(id)}/in-queue-for-diagnostics`,
+    certificateOfTechnicalCondition: (id: string) => `${orderById(id)}/certificate-of-technical-condition`,
     startDiagnostic: (id: string) => `${orderById(id)}/start-diagnostic`,
     diagnosed: (id: string) => `${orderById(id)}/diagnosed`,
     approved: (id: string) => `${orderById(id)}/approved`,
