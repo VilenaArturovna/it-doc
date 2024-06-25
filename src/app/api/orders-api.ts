@@ -128,7 +128,6 @@ export const {
   useCreateOrderMutation,
   useDiagnosedOrderMutation,
   useFetchOrdersQuery,
-  useGetInfoAboutOrderQuery,
   useGetOneOrderQuery,
   useOrderReadyMutation,
   useUpdateOrderMutation,
@@ -136,4 +135,5 @@ export const {
   usePutOrderInQueueForDiagnosticMutation,
   useStartDiagnosticForOrderMutation,
   useLazyGetCertificateOfTechnicalConditionQuery,
+  useLazyGetInfoAboutOrderQuery,
 } = ordersApi;
