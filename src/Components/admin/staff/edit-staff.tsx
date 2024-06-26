@@ -8,7 +8,7 @@ import { BackButton, StyledSpin, SubmitButton } from '../../../ui';
 import styled from 'styled-components';
 import { useGetMe } from '../../../hooks';
 
-interface FormValues extends Omit<CreateStaffRequestDto, 'birthdate' | 'role' | 'tgUsername'> {
+interface FormValues extends Omit<CreateStaffRequestDto, 'birthdate' | 'role' | 'tgId'> {
   birthdate?: Dayjs;
 }
 

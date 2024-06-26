@@ -38,7 +38,7 @@ export const NewStaff = () => {
       {contextHolder}
       <Title level={4}>Новый сотрудник</Title>
       <StyledForm layout="vertical" form={form}>
-        <Form.Item
+        <Form.Item<FormValues>
           name="lastname"
           label="Фамилия"
           rules={[
@@ -50,7 +50,7 @@ export const NewStaff = () => {
         >
           <Input />
         </Form.Item>
-        <Form.Item
+        <Form.Item<FormValues>
           name="firstname"
           label="Имя"
           rules={[
@@ -62,7 +62,7 @@ export const NewStaff = () => {
         >
           <Input />
         </Form.Item>
-        <Form.Item
+        <Form.Item<FormValues>
           name="middleName"
           label="Отчество"
           rules={[
@@ -74,7 +74,7 @@ export const NewStaff = () => {
         >
           <Input />
         </Form.Item>
-        <Form.Item
+        <Form.Item<FormValues>
           name="phone"
           label="Телефон"
           rules={[
@@ -86,9 +86,9 @@ export const NewStaff = () => {
         >
           <Input addonBefore="+7" />
         </Form.Item>
-        <Form.Item
-          name="tgUsername"
-          label="Ник телеграм"
+        <Form.Item<FormValues>
+          name="tgId"
+          label="id в телеграм"
           rules={[
             {
               required: true,
@@ -96,10 +96,10 @@ export const NewStaff = () => {
             },
           ]}
         >
-          <Input addonBefore="@" />
+          <Input />
         </Form.Item>
 
-        <Form.Item
+        <Form.Item<FormValues>
           label="Роль"
           name="role"
           rules={[
@@ -117,7 +117,7 @@ export const NewStaff = () => {
           </Select>
         </Form.Item>
 
-        <Form.Item label="Дата рождения" name="birthdate">
+        <Form.Item<FormValues> label="Дата рождения" name="birthdate">
           <DatePicker format={'D MMM YYYY'} maxDate={dayjs().subtract(18, 'year')} />
         </Form.Item>
 
