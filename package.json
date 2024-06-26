@@ -41,6 +41,7 @@
     "@types/react-dom": "^18.3.0",
     "@types/react-helmet": "^6.1.4",
     "@types/styled-components": "^5.1.15",
+    "cross-var": "^1.1.0",
     "dotenv": "^16.4.5",
     "dotenv-cli": "^7.4.2",
     "prettier": "^3.2.5"
@@ -56,7 +57,7 @@
     "lint:fix": "eslint --fix ./src --ext .jsx,.ts,.tsx",
     "prettier": " prettier \"src/**/*.{ts,tsx}\"",
     "prettier:write": " prettier --write \"src/**/*.{ts,tsx}\"",
-    "openapi:download": "curl \"http://localhost:4000/api-json\" -o ./src/shared/types/api/openapi.json",
+    "openapi:download": "dotenv -- cross-var curl \"%REACT_APP_OPENAPI_URL%\" -o ./src/shared/types/api/openapi.json",
     "openapi:generate": "openapi-generator-cli generate -i ./src/shared/types/api/openapi.json -g typescript-axios --skip-validate-spec --enable-post-process-file -o ./src/shared/types/api/generated",
     "openapi": "yarn openapi:download && yarn openapi:generate"
   },
