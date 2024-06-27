@@ -8,7 +8,7 @@ import { DropdownAvatar } from '../../ui';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
-enum MenuKeys {
+enum AdminMenuKeys {
   orders = 'orders',
   tasks = 'tasks',
   providers = 'providers',
@@ -23,68 +23,66 @@ enum MenuKeys {
 const items: MenuItem[] = [
   {
     label: 'Заявки',
-    key: MenuKeys.orders,
+    key: AdminMenuKeys.orders,
   },
   {
     label: 'Задания',
-    key: MenuKeys.tasks,
+    key: AdminMenuKeys.tasks,
   },
   {
     label: 'Поставщики',
-    key: MenuKeys.providers,
+    key: AdminMenuKeys.providers,
   },
   {
     label: 'Вендоры',
-    key: MenuKeys.vendors,
+    key: AdminMenuKeys.vendors,
   },
   {
     label: 'Клиенты',
-    key: MenuKeys.clients,
+    key: AdminMenuKeys.clients,
   },
   {
     label: 'Склад',
-    key: MenuKeys.warehouse,
+    key: AdminMenuKeys.warehouse,
   },
 ];
 
 const adminItems: MenuItem[] = [
   {
     label: 'Персонал',
-    key: MenuKeys.staff,
+    key: AdminMenuKeys.staff,
   },
   {
     label: 'Дедлайны',
-    key: MenuKeys.deadlines,
+    key: AdminMenuKeys.deadlines,
   },
   {
     label: 'Работы',
-    key: MenuKeys.works,
+    key: AdminMenuKeys.works,
   },
 ];
 
 export const AdminLayout = () => {
   const location = useLocation();
   const locate = location.pathname.slice(7);
-
-  const [selectedItem, setSelectedItem] = useState<MenuKeys | null>(
-    items
-      .concat(adminItems)
-      .map((i) => i!.key)
-      .includes(locate)
-      ? (locate as MenuKeys)
-      : null,
-  );
-
   const navigate = useNavigate();
-  const onClick = (key: MenuKeys) => {
+  const { user } = useGetMe();
+
+  const [selectedItem, setSelectedItem] = useState<AdminMenuKeys | null>(null);
+
+  const menuItems = user?.role !== Role.Admin ? items : items.concat(adminItems);
+
+  const onClick = (key: AdminMenuKeys) => {
     setSelectedItem(key);
   };
-
-  const { user } = useGetMe();
 
   useEffect(() => {
     selectedItem && navigate(`/admin/${selectedItem}`);
   }, [selectedItem]);
+  useEffect(() => {
+    const item = menuItems.map((i) => i!.key).includes(locate) ? (locate as AdminMenuKeys) : null;
+    setSelectedItem(item);
+  }, [locate, user]);
 
   return (
     <Root>
@@ -93,9 +91,9 @@ export const AdminLayout = () => {
         <Menu
           mode="inline"
           theme="dark"
-          items={user?.role !== Role.Admin ? items : items.concat(adminItems)}
+          items={menuItems}
           onClick={(info) => {
-            onClick(info.key as MenuKeys);
+            onClick(info.key as AdminMenuKeys);
           }}
           selectedKeys={selectedItem ? [selectedItem] : undefined}
         />
