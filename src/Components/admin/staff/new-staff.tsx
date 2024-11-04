@@ -1,4 +1,4 @@
-import { DatePicker, Form, Input, notification, Select } from 'antd';
+import { DatePicker, Form, FormInstance, Input, notification, Select } from 'antd';
 import { useCreateStaffMutation } from '../../../app/api';
 import React, { useEffect } from 'react';
 import { notificationHelper } from '../../../shared/helpers';
@@ -37,7 +37,7 @@ export const NewStaff = () => {
     <Root>
       {contextHolder}
       <Title level={4}>Новый сотрудник</Title>
-      <StyledForm layout="vertical" form={form}>
+      <StyledForm layout="vertical" form={form as FormInstance<unknown>}>
         <Form.Item<FormValues>
           name="lastname"
           label="Фамилия"

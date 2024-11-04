@@ -1,6 +1,6 @@
 import { CreateStaffRequestDto } from '../../../shared/types/api/generated';
 import dayjs, { Dayjs } from 'dayjs';
-import { DatePicker, Form, Input, notification } from 'antd';
+import { DatePicker, Form, FormInstance, Input, notification } from 'antd';
 import { useUpdateStaffMutation } from '../../../app/api';
 import React, { useEffect } from 'react';
 import { notificationHelper } from '../../../shared/helpers';
@@ -58,7 +58,7 @@ export const EditStaff = () => {
       {contextHolder}
       {isUserLoading && <StyledSpin />}
       {initialValues && (
-        <StyledForm layout="vertical" form={form} initialValues={initialValues}>
+        <StyledForm layout="vertical" form={form as FormInstance<unknown>} initialValues={initialValues}>
           <Form.Item
             name="lastname"
             label="Фамилия"

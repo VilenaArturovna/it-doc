@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { Checkbox, Form, Input, InputNumber, notification, Select, Space } from 'antd';
+import { Checkbox, Form, FormInstance, Input, InputNumber, notification, Select, Space } from 'antd';
 import { useFetchStaffQuery, useGetOneOrderQuery, useUpdateOrderMutation } from '../../../app/api';
 import {
   Beneficiary,
@@ -85,7 +85,7 @@ export const EditOrder = () => {
       {contextHolder}
       {isLoadingFetch && <StyledSpin />}
       {data ? (
-        <StyledForm form={form} initialValues={initialValues}>
+        <StyledForm form={form as FormInstance<unknown>} initialValues={initialValues}>
           <Form.Item<FormValues> name="price" label="Стоимость">
             <Input addonAfter="&#8381;" />
           </Form.Item>

@@ -1,5 +1,5 @@
 import { useDiagnosedOrderMutation, useFetchWarehouseItemsQuery, useFetchWorksQuery } from '../../../app/api';
-import { Button, Card, Form, Input, InputNumber, notification, Select } from 'antd';
+import { Button, Card, Form, FormInstance, Input, InputNumber, notification, Select } from 'antd';
 import { OrderHasBeenDiagnosedRequestDto } from '../../../shared/types/api/generated';
 import { BackButton, SubmitButton } from '../../../ui';
 import React, { useEffect } from 'react';
@@ -42,7 +42,7 @@ export const OrderDiagnosed = () => {
   return (
     <div>
       {contextHolder}
-      <StyledForm form={form}>
+      <StyledForm form={form as FormInstance<unknown>}>
         <Form.Item<OrderHasBeenDiagnosedRequestDto> name="equipmentCondition" label="Состояние оборудование">
           <Input.TextArea autoSize />
         </Form.Item>
