@@ -25,6 +25,10 @@ yarn-error.log*
 .env
 
 # openapi generator
-src/shared/types/api/generated
 src/shared/types/api/openapi.json
-!src/shared/types/api/generated/api.ts
+src/shared/types/api/generated/.gitignore
+src/shared/types/api/generated/.npmignore
+src/shared/types/api/generated/.openapi-generator
+src/shared/types/api/generated/.openapi-generator-ignore
+src/shared/types/api/generated/git_push.sh
+
