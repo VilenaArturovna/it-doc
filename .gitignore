@@ -27,3 +27,4 @@ yarn-error.log*
 # openapi generator
 src/shared/types/api/generated
 src/shared/types/api/openapi.json
+!src/shared/types/api/generated/api.ts
