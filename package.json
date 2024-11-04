@@ -55,7 +55,8 @@
     "prettier:write": " prettier --write \"src/**/*.{ts,tsx}\"",
     "openapi:download": "dotenv -- cross-var curl \"%REACT_APP_OPENAPI_URL%\" -o ./src/shared/types/api/openapi.json",
     "openapi:generate": "openapi-generator-cli generate -i ./src/shared/types/api/openapi.json -g typescript-axios --skip-validate-spec --enable-post-process-file -o ./src/shared/types/api/generated",
-    "openapi": "yarn openapi:download && yarn openapi:generate"
+    "openapi": "yarn openapi:download && yarn openapi:generate",
+    "build:prod": "yarn openapi && yarn build"
   },
   "eslintConfig": {
     "extends": [
